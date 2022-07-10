@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: sans-serif; */
+}
+
+.Profile {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(to top, rgb(241, 238, 238), rgb(238, 243, 248));
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Profile .imgBx {
+    position: relative;
+    width: 90%;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Profile .imgBx .background {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.Profile .imgBx .background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1%;
+    width: 102%;
+    height: 205px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #ebeaea;
+    box-shadow: 6px 6px 12px #bebebe,
+        -6px -6px 12px #ffffff;
+}
+
+.Profile .imgBx .background img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 8;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.Profile .avatar {
+    position: relative;
+    width: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Profile .avatar img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: 10;
+}
+
+.Profile .avatar::after {
+    content: '';
+    position: absolute;
+    z-index: 9;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: #ebeaea;
+}
+
+.Profile .imgBx h2 {
+    margin-top: 90px;
+    font-size: 28px;
+    z-index: 11;
+}

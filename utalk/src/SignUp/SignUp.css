@@ -1,0 +1,134 @@
+.SignUp {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.SignUp .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.SignUp .SignUpForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    width: 500px;
+    min-height: 600px;
+    background: #fff;
+    border-radius: 20px;
+    animation: shadow 2s infinite;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+
+@keyframes shadow {
+
+    0% {
+        box-shadow: 0 0 0 rgb(219, 217, 217);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgb(219, 217, 217);
+    }
+
+    100% {
+        box-shadow: 0 0 0px rgb(219, 217, 217);
+    }
+}
+
+.SignUp .SignUpForm .imgBx {
+    position: relative;
+    width: 300px;
+    height: auto;
+}
+
+.SignUp .SignUpForm .imgBx img {
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+}
+
+.SignUp .SignUpForm h2 {
+    position: relative;
+    margin: 10px 0;
+    color: rgb(72, 72, 72);
+}
+
+.SignUp .SignUpForm .input {
+    position: relative;
+    width: 80%;
+}
+
+.SignUp .SignUpForm .input input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding-left: 50px;
+    font-size: 20px;
+    background: rgb(232, 232, 232);
+    box-shadow: 1px 1px rgb(2, 11, 28);
+}
+
+.SignUp .SignUpForm .input i {
+    position: relative;
+    z-index: 10;
+    transform: translate(20px, 35px);
+}
+
+.SignUp .SignUpForm .done {
+    position: relative;
+    width: 60%;
+    height: 50px;
+    border-radius: 20px;
+    border: 1px solid rgb(186, 186, 186);
+    background: #45ff9c;
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(18, 18, 18);
+    cursor: pointer;
+}
+
+.SignUp .SignUpForm .done:hover {
+    box-shadow: 0 0 10px #65ffad;
+}
+
+.SignUp .SignUpForm .done:active {
+    background: #4bef98;
+    border: none;
+    box-shadow: 1px 1px 6px #000;
+}
+
+.SignUp .SignUpForm .warning {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: #fd322e;
+}
+
+.SignUp .SignUpForm .warning h3 {
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.SignUp .SignUpForm .warning.accepted {
+    color: rgb(56, 229, 56);
+}

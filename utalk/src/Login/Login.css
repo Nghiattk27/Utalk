@@ -1,0 +1,155 @@
+.Login {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url(./images/background.jpg);
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Login .content {
+    position: relative;
+    width: 90%;
+    min-height: 70%;
+}
+
+.Login .content .logo {
+    position: relative;
+    width: 420px;
+}
+
+.Login .content .logo img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.Login .content .loginform {
+    position: relative;
+    display: flex;
+    min-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 70px;
+}
+
+.Login .content .loginform .info img {
+    position: relative;
+    width: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: cover;
+}
+
+.Login .content .loginform .info {
+    position: relative;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.759);
+    width: 420px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.Login .content .loginform .info h2 {
+    font-size: 24px;
+    margin-top: 10px;
+    text-align: center;
+    color: rgba(57, 210, 234, 0.848);
+    text-shadow: 0 0 1px rgb(255, 255, 255, 0.2);
+}
+
+.Login .content .loginform .info input {
+    height: 50px;
+    width: 100%;
+    margin-top: 15px;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding-left: 50px;
+    font-size: 20px;
+    background: rgb(232, 232, 232);
+    box-shadow: 1px 1px rgb(2, 11, 28);
+}
+
+.Login .content .loginform .info i {
+    font-size: 17px;
+    position: absolute;
+    transform: translate(15px, 31px);
+}
+
+.Login .content .loginform .info button {
+    margin-top: 15px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(23, 21, 21);
+}
+
+.Login .content .loginform .info .signInBx {
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid rgb(186, 186, 186);
+    background: #759dfb;
+    cursor: pointer;
+}
+
+.Login .content .loginform .info .signInBx:active {
+    background: #5b8bfa;
+    border: none;
+    box-shadow: 1px 1px 6px #000;
+}
+
+.Login .content .loginform .info .signUpBx {
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid rgb(186, 186, 186);
+    background: #f86969;
+    cursor: pointer;
+}
+
+.Login .content .loginform .info .signUpBx:active {
+    background: #f94b4b;
+    border: none;
+    box-shadow: 1px 1px 6px #000;
+}
+
+.Login .content .loginform .info .warning {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: #fd322e;
+}
+
+.Login .content .loginform .info .warning i {
+    position: relative;
+    transform: none;
+}
+
+.Login .content .loginform .info .warning h3 {
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.Login .content .loginform .info .warning.accepted {
+    color: rgb(56, 229, 56);
+}
