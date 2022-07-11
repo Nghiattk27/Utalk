@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {useState, useRef} from 'react';
+import { useState, useRef } from 'react';
 import Emoji from './Emoji/Emoji.js';
 import './Post.css';
 import ava from './images/ava.png';
@@ -8,15 +8,15 @@ import defaultLike from './images/defaultLike.png';
 
 function Post() {
 
-  const [emoji,setEmoji] = useState(defaultLike);
-  const [numberOfLikes, setNumberOfLikes] = useState(0); 
+  const [emoji, setEmoji] = useState(defaultLike);
+  const [numberOfLikes, setNumberOfLikes] = useState(0);
 
   const button = useRef("");
   const myAudio = useRef("");
   const seekSlider = useRef("");
 
-  const [value,setValue] = useState(0);
-  const [duration,setDuration] = useState();
+  const [value, setValue] = useState(0);
+  const [duration, setDuration] = useState();
 
   function convertMinute(x) {
     if (!x) return '0:00';
@@ -31,21 +31,19 @@ function Post() {
     }
   };
   const clickButton = () => {
-    if (button.current.className === "fa-solid fa-play")
-    {
+    if (button.current.className === "fa-solid fa-play") {
       button.current.className = "fa-solid fa-pause";
       button.current.style.color = "rgb(249, 242, 32)";
       myAudio.current.play();
     }
-    else 
-    {
+    else {
       button.current.className = "fa-solid fa-play";
       button.current.style.color = "rgb(255, 55, 55)";
       myAudio.current.pause();
     }
   }
   const changeSeek = () => {
-    const progess = (myAudio.current.currentTime / myAudio.current.duration *100);
+    const progess = (myAudio.current.currentTime / myAudio.current.duration * 100);
     seekSlider.current.style.background = `linear-gradient(to right,rgb(241, 50, 50) 0%, rgb(241, 50, 50) ${progess}%,  #fff ${progess}%, #fff 100%)`;
     console.log(progess);
     if (progess == 100) {
@@ -56,11 +54,10 @@ function Post() {
     setValue(progess);
   }
   const rewind = (e) => {
-    const seekTime = e.target.value/100 * myAudio.current.duration;
+    const seekTime = e.target.value / 100 * myAudio.current.duration;
     myAudio.current.currentTime = seekTime;
   }
   const onDurationChangeHandler = (e) => {
-    // console.log(1);
     setDuration(convertMinute(e.target.duration));
   }
   const resetLikeButton = () => {
@@ -68,13 +65,11 @@ function Post() {
     setNumberOfLikes(prev => Math.max(0, prev - 1));
   }
   function formText(x) {
-    if (x == 0)
-    {
-    return 'Hãy là người đầu tiên quan tâm đến điều này';
+    if (x == 0) {
+      return 'Hãy là người đầu tiên quan tâm đến điều này';
     }
-    else 
-    {
-    return `${x} người quan tâm đến điều này`;
+    else {
+      return `${x} người quan tâm đến điều này`;
     }
   }
   return (
@@ -87,21 +82,21 @@ function Post() {
           </div>
           <div className='seekBar'>
             <span>{convertMinute(myAudio.current.currentTime)}</span>
-            <input type='range' className='seekSlider' min='0' max='100' 
-            value={value} step='0.01' ref={seekSlider} onInput={(e) => rewind(e)}/>
+            <input type='range' className='seekSlider' min='0' max='100'
+              value={value} step='0.01' ref={seekSlider} onInput={(e) => rewind(e)} />
             <span>{duration}</span>
           </div>
-          <audio ref={myAudio}  onTimeUpdate={changeSeek} onDurationChange={(e) => onDurationChangeHandler(e)}>
+          <audio ref={myAudio} onTimeUpdate={changeSeek} onDurationChange={(e) => onDurationChangeHandler(e)}>
             <source src={podcast} type="audio/mp3" />
           </audio>
           <div className='likeBx'>
             <div className='reactionBx'>
               <div className='reactions'>
-                <Emoji setEmoji={setEmoji} emoji={emoji} setNumberOfLikes={setNumberOfLikes} defaultLike = {defaultLike} />
+                <Emoji setEmoji={setEmoji} emoji={emoji} setNumberOfLikes={setNumberOfLikes} defaultLike={defaultLike} />
               </div>
               <button onClick={resetLikeButton}>
                 <div className='imgBx'>
-                  <img src={emoji}/>
+                  <img src={emoji} />
                 </div>
               </button>
             </div>
@@ -113,7 +108,7 @@ function Post() {
       </div>
       <div className='imgBx'>
         <div className='profileImg'>
-          <img src={ava}/>
+          <img src={ava} />
         </div>
       </div>
     </div>

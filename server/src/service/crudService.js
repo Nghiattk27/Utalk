@@ -18,17 +18,6 @@ let createNewAccount = async (data) => {
     })
 }
 
-let hashUserPassword = (password) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let hashPassword = await bcrypt.hashSync(password, salt);
-            resolve(hashPassword)
-        } catch (e) {
-            reject(e);
-        }
-    })
-}
-
 let getAllUser = () => {
     return new Promise(async (resolve, reject) => {
         try {

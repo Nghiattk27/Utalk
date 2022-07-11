@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .Profile {
     position: relative;
     width: 100%;
@@ -84,4 +78,99 @@
     margin-top: 90px;
     font-size: 28px;
     z-index: 11;
+    color: rgb(55, 55, 55);
+}
+
+.Profile .createPost {
+    position: relative;
+    margin-top: 100px;
+    width: 920px;
+    min-height: 200px;
+    border: 1px solid rgb(208, 207, 207);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    box-shadow: -6px -6px 15px rgba(255, 255, 255, 0.8),
+        -12px -12px 20px rgba(255, 255, 255, 0.8),
+        6px 6px 12px rgba(0, 0, 0, 0.2),
+        12px 12px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.Profile .createPost textarea {
+    position: relative;
+    width: 700px;
+    min-height: 80px;
+    font-size: 25px;
+    border-radius: 40px;
+    color: rgb(55, 55, 55);
+    font-size: 25px;
+    padding: 20px 10px;
+    border: none;
+    outline: none;
+    background: none;
+    resize: none;
+    margin-top: 20px;
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.5),
+        inset -1px -1px 2px rgba(255, 255, 255, 0.5),
+        inset 8px 8px 16px rgba(0, 0, 0, 0.1),
+        inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+        inset 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Profile .createPost .uploadBx label {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    font-size: 30px;
+    color: rgb(255, 55, 55);
+    box-shadow: inset 0 -5px 3px rgba(0, 0, 0, 0.1),
+        -5px 5px 3px rgba(0, 0, 0, 0.1),
+        5px 5px 3px rgba(0, 0, 0, 0.1),
+        0 5px 3px rgba(0, 0, 0, 0.1),
+        0 10px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.Profile .createPost .uploadBx input {
+    display: none;
+}
+
+.Profile .createPost .uploadBx {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.Profile .createPost .postButton {
+    position: relative;
+    margin-top: 20px;
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(55, 55, 55);
+    left: 50%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    transform: translateX(-50%);
+    box-shadow: -6px -6px 5px rgba(255, 255, 255, 0.8),
+        -8px -8px 10px rgba(255, 255, 255, 0.8),
+        6px 6px 5px rgba(0, 0, 0, 0.2),
+        8px 8px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.Profile .createPost .postButton:active {
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.8),
+        -5px -5px 5px rgba(0, 0, 0, 0.1);
 }

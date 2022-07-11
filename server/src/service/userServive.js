@@ -128,9 +128,31 @@ let hashPassword = (password) => {
         }
     })
 }
+let updateUserInfo = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: data.id }
+            })
+            if (user) {
+                user.first_name = data.first_name
+                user.last_name = data.last_name
+                user.email = data.email
 
+                await user.save();
+                resolve();
+            }
+            else {
+                resolve();
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     createNewAccount: createNewAccount,
     getUserById: getUserById,
+    updateUserInfo: updateUserInfo,
 }

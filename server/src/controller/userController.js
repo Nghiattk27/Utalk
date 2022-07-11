@@ -1,5 +1,4 @@
 import userService from '../service/userServive';
-import bcrypt from 'bcryptjs';
 
 let handleLogin = async (req, res) => {
 
@@ -28,13 +27,23 @@ let getNewAccount = async (req, res) => {
     let account = await userService.createNewAccount(username, password)
     res.send(account);
 }
+
 let getUserInfo = async (req, res) => {
     let id = req.query.id;
     let user = await userService.getUserById(id);
     return res.send(user);
 }
+
+let updateUser = async (req, res) => {
+    await userService.updateUserInfo(req.body);
+    return res.json({
+        message: 'Cập nhật thông tin thành công',
+    })
+}
+
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
     getUserInfo: getUserInfo,
+    updateUser: updateUser,
 }

@@ -7,7 +7,6 @@ import SignUp from '../SignUp/SignUp';
 import utalk from './images/utalk.png';
 import login from "./images/login.png";
 
-const url = 'http://localhost:8082/api/login';
 
 function Login() {
 
@@ -23,14 +22,14 @@ function Login() {
 
   const loginClick = async () => {
     try {
-      const res = await axios.post(url, {
+      const res = await axios.post('http://localhost:8082/api/login', {
         username: username,
         password: password,
       })
       console.log(res.data.userData.id);
       setWarning(res.data.message);
       if (res.data.message === 'Đăng nhập thành công') {
-        if (!res.data.userData.id.first_name) {
+        if (!res.data.userData.first_name) {
           navigate(`/UserForm?id=${res.data.userData.id}`)
         }
         else {

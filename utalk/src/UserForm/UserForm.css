@@ -26,7 +26,7 @@
     padding: 0 10px;
     background: rgb(255, 77, 92);
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 7px 0;
 }
 
 .UserForm .title h2 {
@@ -59,6 +59,7 @@
     font-weight: 700;
     border-radius: 20px;
     border: none;
+    outline: none;
     color: rgb(135, 132, 132);
     background-image: linear-gradient(to top, rgb(241, 238, 238), rgb(245, 245, 245));
     box-shadow:
@@ -76,7 +77,7 @@
     transform: translateX(-50%);
     width: 70%;
     font-size: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
@@ -87,4 +88,18 @@
 
 .UserForm .content button:hover {
     border: 2px groove rgb(45, 44, 44);
+}
+
+.UserForm .content .warning {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    color: rgb(239, 49, 49);
+}
+
+.UserForm .content .warning i {
+    margin-right: 10px;
 }

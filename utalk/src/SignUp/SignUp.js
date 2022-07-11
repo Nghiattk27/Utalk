@@ -23,7 +23,7 @@ function SignUp({ view, signUpClick }) {
         })
         console.log(res.data);
         setWarning(res.data);
-        if (res.data === 'A new account created') {
+        if (res.data == 'A new account created') {
           setUsername('');
           setPassword('');
           setConfirmPassword('');
