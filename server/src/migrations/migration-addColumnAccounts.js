@@ -1,11 +1,12 @@
 module.exports = {
     up: function (queryInterface, Sequelize) {
         return Promise.all([
-            queryInterface.addColumn(
-                'Accounts',
-                'user_id',
-                Sequelize.INTEGER
-            )]);
+            queryInterface.renameColumn(
+                'Users',
+                'Last_name',
+                'last_name',
+            )
+        ]);
     },
 
     down: function (queryInterface, Sequelize) {

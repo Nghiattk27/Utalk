@@ -13,6 +13,8 @@ function Profile() {
 
   let query = new URLSearchParams(location.search);
 
+  let user = {};
+
   useEffect(() => {
     const getUser = async () => {
       const res = await axios.get('http://localhost:8082/api/getUserInfo', {
@@ -20,6 +22,7 @@ function Profile() {
           id: query.get("id"),
         }
       })
+      user = res;
       console.log(res.data);
     }
     getUser();
@@ -33,7 +36,7 @@ function Profile() {
         <div className='avatar'>
           <img src={ava} />
         </div>
-        <h2>{query.get("id")}</h2>
+        <h2>{user.last_name}</h2>
       </div>
       <Post />
     </div>

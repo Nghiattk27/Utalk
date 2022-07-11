@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Login from "./Login/Login.js";
 import Profile from "./Profile/Profile";
+import UserForm from './UserForm/UserForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/Userform" element={<UserForm />} />
         </Routes>
       </div>
     </BrowserRouter>

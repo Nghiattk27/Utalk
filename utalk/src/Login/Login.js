@@ -27,13 +27,17 @@ function Login() {
         username: username,
         password: password,
       })
-      console.log(res.data);
+      console.log(res.data.userData.id);
       setWarning(res.data.message);
       if (res.data.message === 'Đăng nhập thành công') {
-        navigate(`/Profile?id=${res.data.userId}`);
+        if (!res.data.userData.id.first_name) {
+          navigate(`/UserForm?id=${res.data.userData.id}`)
+        }
+        else {
+          navigate(`/Profile?id=${res.data.userData.id}`);
+        }
         warningRef.current.className = 'warning accepted';
         warningIcon.current.className = 'fa-solid fa-circle-check';
-        console.log(res.data.userId);
       }
       else {
         warningRef.current.className = 'warning';

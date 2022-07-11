@@ -20,8 +20,8 @@ let handleUserLogin = (username, password) => {
                             where: { id: account.user_id },
                             raw: true,
                         })
+                        userData = user;
                         userData.errMessage = "Đăng nhập thành công";
-                        userData.userId = user.id;
                         resolve(userData);
                     }
                     else {
