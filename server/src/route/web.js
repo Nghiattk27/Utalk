@@ -1,6 +1,49 @@
 import express from "express";
 import homeController from "../controller/homeController";
 import userController from "../controller/userController";
+import appRoot from 'app-root-path';
+import multer from "multer";
+import path from 'path';
+
+const fileSizeLimitErrorHandler = (err, req, res, next) => {
+    if (err) {
+        res.send({
+            errCode: 1,
+            message: 'File tải lên không thể vượt quá 10MB',
+        }
+        );
+    } else {
+        next()
+    }
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, appRoot + "/src/public/image");
+    },
+
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const imageFilter = function (req, file, cb) {
+
+    if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp3)$/)) {
+        req.fileValidationError = 'Only image files are allowed!';
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+
+let upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 10 * 1024 * 1024,
+    },
+    fileFilter: imageFilter
+});
+
 let router = express.Router();
 
 let initWebRoutes = (app) => {
@@ -19,6 +62,7 @@ let initWebRoutes = (app) => {
     router.post('/api/signup', userController.getNewAccount)
     router.get('/api/getUserInfo', userController.getUserInfo)
     router.put('/api/updateUser', userController.updateUser)
+    router.post('/api/uploadFile', upload.single('file'), fileSizeLimitErrorHandler, userController.handleUploadFile)
 
     return app.use("/", router);
 }

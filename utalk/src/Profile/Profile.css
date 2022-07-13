@@ -137,7 +137,7 @@
     cursor: pointer;
 }
 
-.Profile .createPost .uploadBx input {
+.Profile .createPost .uploadBx #upload {
     display: none;
 }
 
@@ -148,6 +148,13 @@
     flex-direction: row;
     align-items: center;
     margin-top: 20px;
+}
+
+.Profile .createPost .uploadBx i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .Profile .createPost .postButton {
@@ -173,4 +180,17 @@
 .Profile .createPost .postButton:active {
     box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.8),
         -5px -5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Profile .createPost .errBx {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    color: rgb(253, 33, 33);
+}
+
+.Profile .createPost .errBx i {
+    margin-right: 10px;
 }
