@@ -9,7 +9,7 @@ const fileSizeLimitErrorHandler = (err, req, res, next) => {
     if (err) {
         res.send({
             errCode: 1,
-            message: 'File tải lên không thể vượt quá 10MB',
+            message: 'File quá lớn, file tải lên không thể vượt quá 100MB',
         }
         );
     } else {
@@ -39,7 +39,7 @@ const imageFilter = function (req, file, cb) {
 let upload = multer({
     storage: storage,
     limits: {
-        fileSize: 10 * 1024 * 1024,
+        fileSize: 100 * 1024 * 1024,
     },
     fileFilter: imageFilter
 });
