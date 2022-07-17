@@ -4,6 +4,7 @@ import userController from "../controller/userController";
 import appRoot from 'app-root-path';
 import multer from "multer";
 import path from 'path';
+require('dotenv').config();
 
 const fileSizeLimitErrorHandler = (err, req, res, next) => {
     if (err) {
@@ -29,7 +30,7 @@ const storage = multer.diskStorage({
 
 const imageFilter = function (req, file, cb) {
 
-    if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp3)$/)) {
+    if (!file.originalname.match(/\.(mp3)$/)) {
         req.fileValidationError = 'Only image files are allowed!';
         return cb(new Error('Only image files are allowed!'), false);
     }
@@ -63,8 +64,7 @@ let initWebRoutes = (app) => {
     router.get('/api/getUserInfo', userController.getUserInfo)
     router.put('/api/updateUser', userController.updateUser)
     router.post('/api/uploadFile', upload.single('file'), fileSizeLimitErrorHandler, userController.handleUploadFile)
-
+    router.get('/api/getPosts', userController.getPosts)
     return app.use("/", router);
 }
-
 module.exports = initWebRoutes;

@@ -11,7 +11,7 @@ module.exports = {
             user_id: {
                 type: Sequelize.INTEGER
             },
-            posts_title: {
+            post_title: {
                 type: Sequelize.TEXT
             },
             post_audio_path: {

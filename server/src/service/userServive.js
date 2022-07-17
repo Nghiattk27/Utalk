@@ -150,9 +150,40 @@ let updateUserInfo = (data) => {
         }
     })
 }
+let CreateNewPost = (post) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await db.Posts.create({
+                user_id: post.userId,
+                post_title: post.title,
+                post_audio_path: post.fileName,
+                amount_like: post.amountLike,
+            })
+            resolve();
+        }
+        catch (e) {
+            reject(e)
+        }
+    })
+}
+let getPostsbyUserId = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let posts = await db.Posts.findAll({
+                where: { user_id: userId }
+            })
+            resolve(posts);
+        }
+        catch (e) {
+            reject(e)
+        }
+    })
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     createNewAccount: createNewAccount,
     getUserById: getUserById,
     updateUserInfo: updateUserInfo,
+    CreateNewPost: CreateNewPost,
+    getPostsbyUserId: getPostsbyUserId,
 }

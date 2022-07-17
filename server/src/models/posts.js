@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     };
     Posts.init({
         user_id: DataTypes.INTEGER,
-        posts_title: DataTypes.TEXT,
+        post_title: DataTypes.TEXT,
         post_audio_path: DataTypes.STRING,
         amount_like: DataTypes.INTEGER,
     }, {

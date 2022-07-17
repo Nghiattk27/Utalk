@@ -3,10 +3,9 @@ import { useState, useRef } from 'react';
 import Emoji from './Emoji/Emoji.js';
 import './Post.css';
 import ava from './images/ava.png';
-import podcast from './images/podcast.mp3';
 import defaultLike from './images/defaultLike.png';
 
-function Post() {
+function Post(post) {
 
   const [emoji, setEmoji] = useState(defaultLike);
   const [numberOfLikes, setNumberOfLikes] = useState(0);
@@ -75,7 +74,7 @@ function Post() {
   return (
     <div className='Post'>
       <div className='content'>
-        <h2 className='title'>Khi người lớn FOMO</h2>
+        <h2 className='title'>{post.post.post_title}</h2>
         <div className="audioBx">
           <div className='button' onClick={clickButton}>
             <span><i ref={button} className="fa-solid fa-play"></i></span>
@@ -87,7 +86,7 @@ function Post() {
             <span>{duration}</span>
           </div>
           <audio ref={myAudio} onTimeUpdate={changeSeek} onDurationChange={(e) => onDurationChangeHandler(e)}>
-            <source src={podcast} type="audio/mp3" />
+            <source src={post.post.post_audio_path} type="audio/mp3" />
           </audio>
           <div className='likeBx'>
             <div className='reactionBx'>

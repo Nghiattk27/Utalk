@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CreatePost.css';
 
-function CreatePost() {
+function CreatePost(userId) {
 
     const [file, setFile] = useState();
     const [progressBar, setProgressBar] = useState(0);
@@ -33,16 +33,19 @@ function CreatePost() {
     const uploadFileClick = async () => {
 
         if (file) {
+
             const data = new FormData();
+            data.append("title", title);
+            data.append("userId", userId.userId);
             data.append("file", file);
             try {
-                const res = await axios.post('http://localhost:8082/api/uploadFile', data, {
-                    onUploadProgress: ProgressEvent => {
-                        setProgressBar(
-                            parseInt(Math.round(ProgressEvent.loaded * 100) / ProgressEvent.total)
-                        )
+                const res = await axios.post('http://localhost:8082/api/uploadFile', data,
+                    {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
                     }
-                })
+                )
                 if (res.data.errCode == 1) {
                     SetErrMessage(res.data.message);
                 }

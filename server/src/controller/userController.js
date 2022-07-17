@@ -1,6 +1,7 @@
 import userService from '../service/userServive';
 import multer from 'multer';
 import path from 'path';
+require('dotenv').config();
 
 let handleLogin = async (req, res) => {
 
@@ -47,9 +48,12 @@ const upload = multer().single('file');
 
 let handleUploadFile = async (req, res) => {
 
-    console.log(req.file);
+    let post = {};
+    post.title = req.body.title;
+    post.userId = req.body.userId;
+    post.amountLike = 0;
 
-    upload(req, res, function (err) {
+    upload(req, res, async function (err) {
 
         if (req.fileValidationError) {
             return res.send(req.fileValidationError);
@@ -63,15 +67,23 @@ let handleUploadFile = async (req, res) => {
         else if (err) {
             return res.send(err);
         }
-
-        res.send(`You have uploaded this image: <hr/><img src="${req.file.path}" width="500"><hr /><a href="./">Upload another image</a>`);
+        post.fileName = process.env.LocalHostPublic.concat(req.file.filename);
+        await userService.CreateNewPost(post);
     });
+
+    res.send("Tạo bài đăng mới thành công");
 }
 
+let getPosts = async (req, res) => {
+    let userId = req.query.userId;
+    let posts = await userService.getPostsbyUserId(userId);
+    return res.send(posts);
+}
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
     getUserInfo: getUserInfo,
     updateUser: updateUser,
     handleUploadFile: handleUploadFile,
+    getPosts: getPosts,
 }

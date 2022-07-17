@@ -14,6 +14,7 @@ function Profile() {
   let query = new URLSearchParams(location.search);
 
   const [user, setUser] = useState({});
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -27,6 +28,17 @@ function Profile() {
     getUser();
   }, [])
 
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await axios.get('http://localhost:8082/api/getPosts', {
+        params: {
+          userId: query.get("id"),
+        }
+      })
+      setPosts(res.data);
+    }
+    getPosts();
+  }, [])
   return (
     <div className='Profile'>
       <div className='imgBx'>
@@ -38,8 +50,13 @@ function Profile() {
         </div>
         <h2>{user.first_name + " " + user.last_name}</h2>
       </div>
-      <CreatePost />
-      <Post />
+      <CreatePost userId={user.id} />
+      {
+        posts.map((post) => {
+          return <Post post={post} />
+        })
+      }
+
     </div >
   )
 }

@@ -2,9 +2,9 @@ module.exports = {
     up: function (queryInterface, Sequelize) {
         return Promise.all([
             queryInterface.renameColumn(
-                'Users',
-                'Last_name',
-                'last_name',
+                'Posts',
+                'posts_title',
+                'post_title',
             )
         ]);
     },
