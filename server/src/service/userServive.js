@@ -1,5 +1,6 @@
 import db from "../models/index";
 import bcrypt from 'bcryptjs';
+import { resolve } from "app-root-path";
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -179,6 +180,26 @@ let getPostsbyUserId = (userId) => {
         }
     })
 }
+let updateUserAvatar = (avatar, userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: userId }
+            })
+            if (user) {
+                user.user_avatar = avatar;
+                await user.save();
+                resolve();
+            }
+            else {
+                resolve();
+            }
+        }
+        catch (e) {
+            reject(e)
+        }
+    })
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     createNewAccount: createNewAccount,
@@ -186,4 +207,5 @@ module.exports = {
     updateUserInfo: updateUserInfo,
     CreateNewPost: CreateNewPost,
     getPostsbyUserId: getPostsbyUserId,
+    updateUserAvatar: updateUserAvatar,
 }

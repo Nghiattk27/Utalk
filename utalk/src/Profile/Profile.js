@@ -4,9 +4,10 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import "./Profile.css";
 import Post from '../Posts/Post.js';
+import CreatePost from './CreatePost/CreatePost';
+import MyEditor from '../MyEditor/MyEditor';
 import ava from './images/ava.png';
 import background from './images/background.jpg';
-import CreatePost from './CreatePost/CreatePost';
 
 function Profile() {
 
@@ -15,6 +16,7 @@ function Profile() {
 
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
+  const [editAvatar, setEditAvatar] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -41,22 +43,31 @@ function Profile() {
   }, [])
   return (
     <div className='Profile'>
+      {
+        editAvatar && (
+          <div className='editBx'>
+            <MyEditor userId={query.get('id')} />
+          </div>
+        )
+      }
       <div className='imgBx'>
         <div className='background'>
           <img src={background} />
         </div>
         <div className='avatar'>
           <img src={ava} />
+          <div className='changeAvatar' onClick={() => setEditAvatar(!editAvatar)}>
+            <i className="fa-solid fa-camera"></i>
+          </div>
         </div>
         <h2>{user.first_name + " " + user.last_name}</h2>
       </div>
       <CreatePost userId={user.id} />
-      {
+      {/* {
         posts.map((post) => {
           return <Post post={post} />
         })
-      }
-
+      } */}
     </div >
   )
 }

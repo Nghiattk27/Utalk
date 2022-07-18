@@ -30,12 +30,13 @@ const storage = multer.diskStorage({
 
 const imageFilter = function (req, file, cb) {
 
-    if (!file.originalname.match(/\.(mp3)$/)) {
+    if (!file.originalname.match(/\.(mp3|jpeg|png|jpg)$/)) {
         req.fileValidationError = 'Only image files are allowed!';
         return cb(new Error('Only image files are allowed!'), false);
     }
     cb(null, true);
 };
+
 
 let upload = multer({
     storage: storage,
@@ -64,7 +65,9 @@ let initWebRoutes = (app) => {
     router.get('/api/getUserInfo', userController.getUserInfo)
     router.put('/api/updateUser', userController.updateUser)
     router.post('/api/uploadFile', upload.single('file'), fileSizeLimitErrorHandler, userController.handleUploadFile)
+    router.post('/api/uploadAvatar', upload.single('file'), fileSizeLimitErrorHandler, userController.updateAvatar)
     router.get('/api/getPosts', userController.getPosts)
+
     return app.use("/", router);
 }
 module.exports = initWebRoutes;

@@ -1,0 +1,133 @@
+.MyEditor {
+    position: sticky;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: rgba(74, 74, 74, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    z-index: 100;
+}
+
+.MyEditor .container {
+    position: relative;
+    width: 600px;
+    height: auto;
+    background: rgb(97, 181, 188);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.MyEditor .container .textBx {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(252, 251, 251);
+}
+
+.MyEditor .container .control {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.MyEditor .container .control .imgBx {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.MyEditor .container .control .imgBx #upload {
+    display: none;
+}
+
+.MyEditor .container .control .imgBx label {
+    padding: 10px 20px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px dashed #000;
+    margin-left: 100px;
+}
+
+.MyEditor .container .control .imgBx h3 {
+    margin-left: 10px;
+    color: rgb(255, 255, 255);
+    margin-right: 40px;
+}
+
+.MyEditor .container .control .imgBx button {
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.MyEditor .container .control .rangeBx {
+    position: relative;
+    width: 80%;
+    height: 100px;
+    background: rgb(222, 222, 222);
+    margin: 50px 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed rgb(137, 137, 137);
+    border-radius: 10px;
+}
+
+.MyEditor .container .control input[type='range'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 80%;
+    border: 1px solid rgb(207, 191, 191);
+    height: 12px;
+    border-radius: 40px;
+    box-shadow: 0px 0px 4px rgba(135, 129, 129, 0.5);
+    cursor: pointer;
+}
+
+.MyEditor .container .control input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(241, 50, 50);
+}
+
+.MyEditor .container .control .saveImg {
+    position: relative;
+    padding: 8px 10px;
+    max-width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(114, 240, 183);
+    border: 2px double rgb(90, 90, 90);
+    border-radius: 10px;
+    font-size: 17px;
+    margin-bottom: 30px;
+    color: rgb(32, 32, 32);
+    cursor: pointer;
+}
+
+.MyEditor .container .control .saveImg:active {
+    background: rgb(102, 213, 163);
+}

@@ -9,6 +9,7 @@ import {
 import Login from "./Login/Login.js";
 import Profile from "./Profile/Profile";
 import UserForm from './UserForm/UserForm';
+import MyEditor from './MyEditor/MyEditor';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/" element={<Login />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Userform" element={<UserForm />} />
+          <Route path="/MyEditor" element={<MyEditor />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,11 +1,20 @@
 .Profile {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 101vh;
     background-image: linear-gradient(to top, rgb(241, 238, 238), rgb(238, 243, 248));
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.Profile .editBx {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    overflow: auto;
 }
 
 .Profile .imgBx {
@@ -49,7 +58,7 @@
 
 .Profile .avatar {
     position: relative;
-    width: 150px;
+    width: 160px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -68,10 +77,26 @@
     content: '';
     position: absolute;
     z-index: 9;
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     background: #ebeaea;
+}
+
+.Profile .avatar .changeAvatar {
+    position: absolute;
+    z-index: 11;
+    transform: translate(55px, 55px);
+    width: 42px;
+    height: 42px;
+    background: rgb(232, 231, 231);
+    box-shadow: 0 0 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
 }
 
 .Profile .imgBx h2 {
