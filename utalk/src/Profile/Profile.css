@@ -1,12 +1,12 @@
 .Profile {
     position: relative;
     width: 100%;
-    height: 101vh;
+    min-height: 100vh;
     background-image: linear-gradient(to top, rgb(241, 238, 238), rgb(238, 243, 248));
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .Profile .editBx {
@@ -20,7 +20,7 @@
 .Profile .imgBx {
     position: relative;
     width: 90%;
-    max-height: 300px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,6 +67,7 @@
 
 .Profile .avatar img {
     position: absolute;
+    border-radius: 50%;
     width: 100%;
     height: auto;
     object-fit: cover;

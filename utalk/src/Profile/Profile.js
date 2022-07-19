@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./Profile.css";
 import Post from '../Posts/Post.js';
 import CreatePost from './CreatePost/CreatePost';
-import MyEditor from '../MyEditor/MyEditor';
-import ava from './images/ava.png';
 import background from './images/background.jpg';
 
 function Profile() {
@@ -16,7 +14,8 @@ function Profile() {
 
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
-  const [editAvatar, setEditAvatar] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -43,20 +42,13 @@ function Profile() {
   }, [])
   return (
     <div className='Profile'>
-      {
-        editAvatar && (
-          <div className='editBx'>
-            <MyEditor userId={query.get('id')} />
-          </div>
-        )
-      }
       <div className='imgBx'>
         <div className='background'>
           <img src={background} />
         </div>
         <div className='avatar'>
-          <img src={ava} />
-          <div className='changeAvatar' onClick={() => setEditAvatar(!editAvatar)}>
+          <img src={user.user_avatar} />
+          <div className='changeAvatar' onClick={() => navigate(`/UpdateAvatar?id=${query.get('id')}`)}>
             <i className="fa-solid fa-camera"></i>
           </div>
         </div>

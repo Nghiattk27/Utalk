@@ -2,6 +2,7 @@ import React from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import axios from 'axios'
 import './MyEditor.css'
+import NavigateProfile from './NavigateProfile'
 
 class MyEditor extends React.Component {
 
@@ -11,6 +12,8 @@ class MyEditor extends React.Component {
     rotate: 0,
     preview: {},
     percent: 0,
+    file: {},
+    done: false,
   }
 
   imgChange = (e) => {
@@ -41,12 +44,17 @@ class MyEditor extends React.Component {
   }
 
   saveImg = async () => {
-    // const file = this.editor.getImageScaledToCanvas().toDataURL();
-    const file = this.state.img;
+
+    const image = await this.editor.getImageScaledToCanvas().toDataURL();
+    const response = await fetch(image);
+    // here image is url/location of image
+    const blob = await response.blob();
+    const file = new File([blob], 'image.jpg', { type: blob.type });
+
     console.log(file);
+    console.log(this.state.img);
 
-    if (file) {
-
+    if (file && this.state.img) {
       const data = new FormData();
       data.append("file", file);
       data.append("userId", this.props.userId);
@@ -59,26 +67,22 @@ class MyEditor extends React.Component {
           }
         )
         console.log(res.data);
-        // if (res.data.errCode == 1) {
-        //   console.log(res.data.message);
-        // }
+        this.setState({
+          done: !this.state.done,
+        })
       }
       catch (e) {
-
       }
     } else {
-      console.log("Hãy chọn ảnh đại diện mới");
+      console.log("Hãy tải ảnh của bạn lên");
     }
   }
 
-  setEditorRef = (editor) => (this.editor = editor)
-  render() {
 
+  setEditorRef = (editor) => this.editor = editor
+  render() {
     return (
       <div className='MyEditor'>
-        {
-          console.log(this.props.userId)
-        }
         <div className='container'>
           <div className='textBx'>
             <h2> Cập nhật ảnh đại diện của bạn </h2>
@@ -115,16 +119,12 @@ class MyEditor extends React.Component {
 
             </div>
             <button onClick={this.saveImg} className='saveImg'><h3> Lưu ảnh </h3></button>
-            {/* {
-              this.state.preview.img && (
-                <div>
-                  <img src={this.state.preview.img}
-                    style={{
-                      borderRadius: this.state.preview.borderRadius,
-                    }} />
-                </div>
+            {
+              this.state.done &&
+              (
+                <NavigateProfile userId={this.props.userId} />
               )
-            } */}
+            }
           </div>
         </div>
       </div>
