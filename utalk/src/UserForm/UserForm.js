@@ -48,15 +48,15 @@ function UserForm() {
             </div>
             <div className='content'>
                 <p>Họ và tên đệm</p>
-                <input type='text' placeholder=''
-                    value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
+                <input type='text' placeholder='' spellCheck='false'
+                    value={firstName} onChange={(e) => setFirstName(e.target.value)} ></input>
 
                 <p>Tên của bạn</p>
-                <input type='text' placeholder=''
+                <input type='text' placeholder='' spellCheck='false'
                     value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
 
                 <p>Email của bạn</p>
-                <input type='email' placeholder=''
+                <input type='email' placeholder='' spellCheck='false'
                     value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 <div className='warning'>
                     <i className="" ref={warningIcon}></i>

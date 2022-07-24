@@ -97,6 +97,18 @@ let getUserById = (userId) => {
         }
     })
 }
+let getVisitorById = (visitorId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: visitorId }
+            })
+            return resolve(user);
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 let createNewUser = (username) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -208,4 +220,5 @@ module.exports = {
     CreateNewPost: CreateNewPost,
     getPostsbyUserId: getPostsbyUserId,
     updateUserAvatar: updateUserAvatar,
+    getVisitorById: getVisitorById,
 }

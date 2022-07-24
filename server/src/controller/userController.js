@@ -1,7 +1,9 @@
 import userService from '../service/userServive';
 import multer from 'multer';
 import path from 'path';
+import { createJWT, verifyToken } from '../middleware/JWTAction';
 require('dotenv').config();
+
 
 let handleLogin = async (req, res) => {
 
@@ -14,9 +16,12 @@ let handleLogin = async (req, res) => {
         })
     }
     let userData = await userService.handleUserLogin(username, password);
+    let payload = { userId: userData.id };
+    let token = createJWT(payload);
     return res.status(200).json({
         message: userData.errMessage,
         userData,
+        token,
     })
 }
 
@@ -32,9 +37,15 @@ let getNewAccount = async (req, res) => {
 }
 
 let getUserInfo = async (req, res) => {
+    let token = req.cookies.token;
+    let data = verifyToken(token);
+    let visitor = data;
     let id = req.query.id;
     let user = await userService.getUserById(id);
-    return res.send(user);
+    return res.json({
+        user,
+        visitor: visitor,
+    });
 }
 
 let updateUser = async (req, res) => {
@@ -103,6 +114,15 @@ let getPosts = async (req, res) => {
     let posts = await userService.getPostsbyUserId(userId);
     return res.send(posts);
 }
+
+let getVisitorInfo = async (req, res) => {
+    let id = req.query.id;
+    let user = await userService.getVisitorById(id);
+    return res.json({
+        user,
+    });
+}
+
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
@@ -111,4 +131,5 @@ module.exports = {
     handleUploadFile: handleUploadFile,
     getPosts: getPosts,
     updateAvatar: updateAvatar,
+    getVisitorInfo: getVisitorInfo,
 }

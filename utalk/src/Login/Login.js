@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import "./Login.css";
+import { useCookies } from 'react-cookie';
 import SignUp from '../SignUp/SignUp';
 import utalk from './images/utalk.png';
 import login from "./images/login.png";
@@ -13,6 +14,7 @@ function Login() {
   const [view, setView] = useState('none');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
   const [warning, setWarning] = useState('Hãy điền thông tin tài khoản');
   const warningRef = useRef();
@@ -26,14 +28,16 @@ function Login() {
         username: username,
         password: password,
       })
-      console.log(res.data.userData.id);
+      console.log(res.data.token);
+      setCookie("token", res.data.token, { path: '/' });
+
       setWarning(res.data.message);
       if (res.data.message === 'Đăng nhập thành công') {
         if (!res.data.userData.first_name) {
           navigate(`/UserForm?id=${res.data.userData.id}`)
         }
         else {
-          navigate(`/Profile?id=${res.data.userData.id}`);
+          navigate(`/Profile?id${res.data.userData.id}`);
         }
         warningRef.current.className = 'warning accepted';
         warningIcon.current.className = 'fa-solid fa-circle-check';

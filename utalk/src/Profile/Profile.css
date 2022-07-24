@@ -24,36 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.Profile .imgBx .background {
-    position: relative;
-    width: 100%;
-    height: 200px;
-}
-
-.Profile .imgBx .background::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -1%;
-    width: 102%;
-    height: 205px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background: #ebeaea;
-    box-shadow: 6px 6px 12px #bebebe,
-        -6px -6px 12px #ffffff;
-}
-
-.Profile .imgBx .background img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 8;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    margin-top: 90px;
 }
 
 .Profile .avatar {
@@ -66,7 +37,7 @@
 }
 
 .Profile .avatar img {
-    position: absolute;
+    position: relative;
     border-radius: 50%;
     width: 100%;
     height: auto;
@@ -81,7 +52,8 @@
     width: 170px;
     height: 170px;
     border-radius: 50%;
-    background: #ebeaea;
+    border: 1px solid rgb(243, 238, 238);
+    background: rgb(235, 231, 231);
 }
 
 .Profile .avatar .changeAvatar {
@@ -101,7 +73,7 @@
 }
 
 .Profile .imgBx h2 {
-    margin-top: 90px;
+    position: relative;
     font-size: 28px;
     z-index: 11;
     color: rgb(55, 55, 55);

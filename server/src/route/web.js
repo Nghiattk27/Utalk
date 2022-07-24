@@ -4,7 +4,10 @@ import userController from "../controller/userController";
 import appRoot from 'app-root-path';
 import multer from "multer";
 import path from 'path';
+import cookieParser from 'cookie-parser';
+import { createJWT, verifyToken } from '../middleware/JWTAction';
 require('dotenv').config();
+
 
 const fileSizeLimitErrorHandler = (err, req, res, next) => {
     if (err) {
@@ -37,7 +40,6 @@ const imageFilter = function (req, file, cb) {
     cb(null, true);
 };
 
-
 let upload = multer({
     storage: storage,
     limits: {
@@ -47,6 +49,8 @@ let upload = multer({
 });
 
 let router = express.Router();
+
+router.use(cookieParser());
 
 let initWebRoutes = (app) => {
 
@@ -67,6 +71,7 @@ let initWebRoutes = (app) => {
     router.post('/api/uploadFile', upload.single('file'), fileSizeLimitErrorHandler, userController.handleUploadFile)
     router.post('/api/uploadAvatar', upload.single('file'), fileSizeLimitErrorHandler, userController.updateAvatar)
     router.get('/api/getPosts', userController.getPosts)
+    router.get('/api/getVisitorInfo', userController.getVisitorInfo)
 
     return app.use("/", router);
 }
