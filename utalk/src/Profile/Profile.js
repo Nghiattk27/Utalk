@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./Profile.css";
-import Post from '../Posts/Post.js';
+import Post from '../Posts/Post/Post.js';
 import CreatePost from './CreatePost/CreatePost';
 import Header from '../Header/Header';
 import userImg from '../images/userImg.png';
@@ -35,17 +35,17 @@ function Profile() {
     getUser();
   }, [])
 
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     const res = await axios.get('http://localhost:8082/api/getPosts', {
-  //       params: {
-  //         userId: query.get('id'),
-  //       }
-  //     })
-  //     setPosts(res.data);
-  //   }
-  //   getPosts();
-  // }, [])
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await axios.get('http://localhost:8082/api/getPosts', {
+        params: {
+          userId: query.get('id'),
+        }
+      })
+      setPosts(res.data);
+    }
+    getPosts();
+  }, [])
 
   return (
     <div className='Profile'>
@@ -67,11 +67,11 @@ function Profile() {
         visitor && visitor.userId == user.id &&
         <CreatePost userId={user.id} />
       }
-      {/* {
+      {
         posts.map((post) => {
           return <Post post={post} />
         })
-      } */}
+      }
     </div >
   )
 }

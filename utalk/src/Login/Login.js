@@ -37,7 +37,7 @@ function Login() {
           navigate(`/UserForm?id=${res.data.userData.id}`)
         }
         else {
-          navigate(`/Profile?id${res.data.userData.id}`);
+          navigate(`/Profile?id=${res.data.userData.id}`);
         }
         warningRef.current.className = 'warning accepted';
         warningIcon.current.className = 'fa-solid fa-circle-check';
