@@ -1,38 +1,5 @@
 .CommentBx {
     position: relative;
     width: 100%;
-    min-height: 65px;
-    display: flex;
-}
-
-.CommentBx .commentAvatar {
-    position: relative;
-    width: 50px;
-}
-
-.CommentBx .commentAvatar img {
-    position: absolute;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.CommentBx .commentContent {
-    position: relative;
-    width: calc(100% - 50px);
-    padding-left: 15px;
-    background: rgb(242, 241, 241);
-    box-shadow: 0 0 2px #000;
-    border-radius: 10px;
-    margin-left: 10px;
-}
-
-.CommentBx .commentContent h2 {
-    font-size: 16px;
-    margin-bottom: 1px;
-}
-
-.CommentBx .commentContent p {
-    font-size: 18px;
-    color: rgb(35, 34, 34);
+    margin-top: 50px;
 }

@@ -1,0 +1,41 @@
+.WriteComment {
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.WriteComment .WriteCommentAvatar {
+    position: relative;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.WriteComment .WriteCommentAvatar img {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+}
+
+.WriteComment .MyComment {
+    position: relative;
+    width: calc(100% - 50px);
+    margin-left: 10px;
+}
+
+.WriteComment .MyComment textarea {
+    position: relative;
+    width: 100%;
+    min-height: 60px;
+    padding-left: 15px;
+    padding-right: 5px;
+    padding-top: 2px;
+    font-size: 18px;
+    resize: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.WriteComment .MyComment textarea:focus {
+    outline: 1px solid rgb(52, 52, 52)
+}

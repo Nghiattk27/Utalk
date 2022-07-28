@@ -17,9 +17,6 @@ module.exports = {
             post_audio_path: {
                 type: Sequelize.STRING
             },
-            amount_like: {
-                type: Sequelize.INTEGER
-            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
