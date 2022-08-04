@@ -17,6 +17,9 @@ module.exports = {
             post_audio_path: {
                 type: Sequelize.STRING
             },
+            post_image_path: {
+                type: Sequelize.STRING
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

@@ -58,7 +58,6 @@ let updateUser = async (req, res) => {
 const upload = multer().single('file');
 
 let handleUploadFile = async (req, res) => {
-
     let post = {};
     post.title = req.body.title;
     post.userId = req.body.userId;
@@ -78,7 +77,7 @@ let handleUploadFile = async (req, res) => {
         else if (err) {
             return res.send(err);
         }
-        post.fileName = process.env.LocalHostPublic.concat(req.file.filename);
+        post.fileName = process.env.Audio.concat(req.file.filename);
         await userService.CreateNewPost(post);
     });
 
@@ -102,7 +101,7 @@ let updateAvatar = async (req, res) => {
         else if (err) {
             return res.send(err);
         }
-        let avatar = process.env.LocalHostPublic.concat(req.file.filename);
+        let avatar = process.env.Avatar.concat(req.file.filename);
         await userService.updateUserAvatar(avatar, userId);
     });
 
@@ -123,6 +122,29 @@ let getVisitorInfo = async (req, res) => {
     });
 }
 
+let updatePostImage = async (req, res) => {
+
+    upload(req, res, async function (err) {
+
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }
+        else if (!req.file) {
+            return res.send('Please select an image to upload');
+        }
+        else if (err instanceof multer.MulterError) {
+            return res.send(err);
+        }
+        else if (err) {
+            return res.send(err);
+        }
+        let fileImage = process.env.PostImage.concat(req.file.filename);
+        await userService.updatePostImage(fileImage);
+    });
+
+    res.send("Tạo bài đăng mới thành công");
+}
+
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
@@ -132,4 +154,5 @@ module.exports = {
     getPosts: getPosts,
     updateAvatar: updateAvatar,
     getVisitorInfo: getVisitorInfo,
+    updatePostImage: updatePostImage,
 }

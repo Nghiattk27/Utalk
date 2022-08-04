@@ -1,6 +1,5 @@
 import db from "../models/index";
 import bcrypt from 'bcryptjs';
-import { resolve } from "app-root-path";
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -42,7 +41,6 @@ let handleUserLogin = (username, password) => {
         }
     })
 }
-
 let checkUsername = (username) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -59,7 +57,6 @@ let checkUsername = (username) => {
         }
     })
 }
-
 let createNewAccount = (username, password) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -212,6 +209,8 @@ let updateUserAvatar = (avatar, userId) => {
         }
     })
 }
+let updatePostImage = (post) => {
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     createNewAccount: createNewAccount,
@@ -221,4 +220,5 @@ module.exports = {
     getPostsbyUserId: getPostsbyUserId,
     updateUserAvatar: updateUserAvatar,
     getVisitorById: getVisitorById,
+    updatePostImage: updatePostImage,
 }

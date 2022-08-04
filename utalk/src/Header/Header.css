@@ -46,6 +46,7 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+    color: rgb(155, 154, 154);
 }
 
 .Header .searchBx input {

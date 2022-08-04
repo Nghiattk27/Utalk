@@ -29,7 +29,7 @@
 
 .Profile .avatar {
     position: relative;
-    width: 160px;
+    width: 180px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -49,17 +49,17 @@
     content: '';
     position: absolute;
     z-index: 9;
-    width: 170px;
-    height: 170px;
+    width: 190px;
+    height: 190px;
     border-radius: 50%;
-    border: 1px solid rgb(243, 238, 238);
-    background: rgb(235, 231, 231);
+    /* border: 1px solid rgb(148, 148, 148); */
+    background: rgb(206, 205, 205);
 }
 
 .Profile .avatar .changeAvatar {
     position: absolute;
     z-index: 11;
-    transform: translate(55px, 55px);
+    transform: translate(62px, 62px);
     width: 42px;
     height: 42px;
     background: rgb(232, 231, 231);
@@ -77,4 +77,5 @@
     font-size: 28px;
     z-index: 11;
     color: rgb(55, 55, 55);
+    margin-top: 10px;
 }
