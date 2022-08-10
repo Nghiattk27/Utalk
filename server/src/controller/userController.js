@@ -58,6 +58,7 @@ let updateUser = async (req, res) => {
 const upload = multer().single('file');
 
 let handleUploadFile = async (req, res) => {
+    let newPost = {};
     let post = {};
     post.title = req.body.title;
     post.userId = req.body.userId;
@@ -78,10 +79,12 @@ let handleUploadFile = async (req, res) => {
             return res.send(err);
         }
         post.fileName = process.env.Audio.concat(req.file.filename);
-        await userService.CreateNewPost(post);
+        newPost = await userService.CreateNewPost(post);
+        res.json({
+            newPost,
+        })
     });
 
-    res.send("Tạo bài đăng mới thành công");
 }
 
 let updateAvatar = async (req, res) => {
@@ -124,6 +127,7 @@ let getVisitorInfo = async (req, res) => {
 
 let updatePostImage = async (req, res) => {
 
+    let postId = req.body.postId;
     upload(req, res, async function (err) {
 
         if (req.fileValidationError) {
@@ -139,10 +143,10 @@ let updatePostImage = async (req, res) => {
             return res.send(err);
         }
         let fileImage = process.env.PostImage.concat(req.file.filename);
-        await userService.updatePostImage(fileImage);
+        await userService.updatePostImage(fileImage, postId);
     });
 
-    res.send("Tạo bài đăng mới thành công");
+    // res.send("Tạo bài đăng mới thành công");
 }
 
 module.exports = {

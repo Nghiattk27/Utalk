@@ -1,0 +1,56 @@
+.PostImage {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.PostImage .postImageBx {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgb(181, 181, 181);
+    border-radius: 50%;
+}
+
+.PostImage .postImageBx label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.PostImage .postImageBx img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.PostImage .postImageBx .hoverEffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: none;
+    cursor: pointer;
+    font-size: 50px;
+    color: rgba(147, 147, 147, 0.394);
+}
+
+/* .PostImage .postImageBx:hover .hoverEffect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.PostImage .postImageBx #uploadImg {
+    display: none;
+}

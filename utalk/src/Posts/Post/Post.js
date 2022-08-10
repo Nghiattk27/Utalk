@@ -8,7 +8,6 @@ import CommentBx from '../Comment/CommentBx/CommentBx';
 import Audio from '../Audio/Audio';
 
 function Post(post) {
-
   return (
     <div className='Post'>
       <div className='content'>

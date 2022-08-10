@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CreatePost.css';
+import PostImage from '../PostImage/PostImage';
 
 function CreatePost(userId) {
 
@@ -11,13 +12,17 @@ function CreatePost(userId) {
     const [preview, setPreview] = useState('');
     const [title, setTitle] = useState('');
     const [titleWarning, setTitleWarning] = useState('');
+    const [imgFile, setImgFile] = useState({});
+
+    useEffect(() => {
+        console.log(imgFile);
+    }, [imgFile])
 
     useEffect(() => {
         return () => {
             preview && URL.revokeObjectURL(preview.preview)
         }
     }, [preview])
-
     const previewFile = (e) => {
 
         let fileTmp = e.target.files[0];
@@ -29,15 +34,12 @@ function CreatePost(userId) {
         setPreview(fileTmp);
 
     }
-
-    const uploadFileClick = async () => {
-
-        if (file) {
-
+    const uploadPostClick = async () => {
+        if (file && imgFile) {
             const data = new FormData();
             data.append("title", title);
             data.append("userId", userId.userId);
-            data.append("file", file);
+            data.append("audioFile", file);
             try {
                 const res = await axios.post('http://localhost:8082/api/uploadFile', data,
                     {
@@ -46,9 +48,18 @@ function CreatePost(userId) {
                         }
                     }
                 )
-                if (res.data.errCode == 1) {
-                    SetErrMessage(res.data.message);
-                }
+                const baby = res.data;
+                const dataImg = new FormData();
+                dataImg.append("imgFile", imgFile);
+                dataImg.append("postId", baby.newPost.id);
+                console.log(imgFile, baby.newPost.id);
+                const abc = await axios.post('http://localhost:8082/api/uploadPostImage', dataImg,
+                    {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    }
+                )
             }
             catch (e) {
 
@@ -58,7 +69,6 @@ function CreatePost(userId) {
             console.log("Hãy chọn file audio của bạn");
         }
     }
-
     const fileNameElement = () => {
         if (!file) {
             return <h3>Tải file audio của bạn lên</h3>
@@ -83,7 +93,6 @@ function CreatePost(userId) {
             return <h3>{fileName}</h3>
         }
     }
-
     const errMessageElement = () => {
         if (errMessage) {
             return (
@@ -94,7 +103,6 @@ function CreatePost(userId) {
             )
         }
     }
-
     const titleChange = (e) => {
         setTitle(e.target.value);
     }
@@ -120,10 +128,13 @@ function CreatePost(userId) {
             {titleWarning && (
                 <h4>{titleWarning}</h4>
             )}
+            <div className='PostImageDiv'>
+                <PostImage setImgFile={setImgFile} />
+            </div>
             <div className='uploadBx'>
                 <label htmlFor='upload'>
                     <i className="fa-solid fa-plus"></i>
-                    <input type='file' id='upload' name='audioFile'
+                    <input type='file' id='upload' name='audioFile' accept='audio/*'
                         onChange={previewFile}></input>
                 </label>
                 {fileNameElement()}
@@ -134,7 +145,7 @@ function CreatePost(userId) {
                     <source src={preview.preview} />
                 </audio >
             )}
-            <button className='postButton' onClick={uploadFileClick}>Đăng bài</button>
+            <button className='postButton' onClick={uploadPostClick}>Đăng bài</button>
         </div>
     )
 }

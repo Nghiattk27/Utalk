@@ -30,5 +30,5 @@ let uploadAudio = multer({
 });
 
 module.exports = {
-    uploadAudio: uploadAudio.single('file'),
+    uploadAudio: uploadAudio.single('audioFile'),
 }

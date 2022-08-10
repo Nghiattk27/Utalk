@@ -163,13 +163,13 @@ let updateUserInfo = (data) => {
 let CreateNewPost = (post) => {
     return new Promise(async (resolve, reject) => {
         try {
-            await db.Posts.create({
+            let newPost = await db.Posts.create({
                 user_id: post.userId,
                 post_title: post.title,
                 post_audio_path: post.fileName,
                 amount_like: post.amountLike,
             })
-            resolve();
+            resolve(newPost);
         }
         catch (e) {
             reject(e)
@@ -209,7 +209,24 @@ let updateUserAvatar = (avatar, userId) => {
         }
     })
 }
-let updatePostImage = (post) => {
+let updatePostImage = (fileImage, postId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let post = await db.Posts.findOne({
+                where: { id: postId }
+            })
+            if (post) {
+                post.post_image_path = fileImage;
+                await post.save();
+                resolve();
+            }
+            else {
+                resolve();
+            }
+        } catch (e) {
+            reject(e);
+        }
+    })
 }
 module.exports = {
     handleUserLogin: handleUserLogin,

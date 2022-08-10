@@ -31,5 +31,5 @@ let uploadPostImage = multer({
 });
 
 module.exports = {
-    uploadPostImage: uploadPostImage.single('file'),
+    uploadPostImage: uploadPostImage.single('imgFile'),
 }
