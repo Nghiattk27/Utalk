@@ -5,7 +5,7 @@ import axios from 'axios';
 import "./Profile.css";
 import Post from '../Posts/Post/Post.js';
 import CreatePost from './CreatePost/CreatePost';
-import Header from '../Header/Header';
+import Header from '../Header/Header/Header';
 import userImg from '../images/userImg.png';
 
 function Profile() {
@@ -68,9 +68,11 @@ function Profile() {
         <CreatePost userId={user.id} />
       }
       {
-        posts.map((post) => {
-          return <Post post={post} />
-        })
+        visitor && visitor.userId && (
+          posts.map((post) => {
+            return <Post post={post} visitorId={visitor.userId} key={post.id} />
+          })
+        )
       }
     </div >
   )

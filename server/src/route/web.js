@@ -32,6 +32,10 @@ let initWebRoutes = (app) => {
     router.post('/api/uploadPostImage', uploadPostImage, fileSizeLimitErrorHandler, userController.updatePostImage)
     router.get('/api/getPosts', userController.getPosts)
     router.get('/api/getVisitorInfo', userController.getVisitorInfo)
+    router.get('/api/getAllUsers', userController.getAllUsers)
+    router.post('/api/addPostLike', userController.addPostLike)
+    router.post('/api/deletePostLike', userController.deletePostLike)
+    router.get('/api/countAllPostLike', userController.countAllPostLike)
 
     return app.use("/", router);
 }

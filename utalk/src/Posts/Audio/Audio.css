@@ -1,7 +1,7 @@
 .Audio {
     position: relative;
     width: 100%;
-    min-height: 180px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,4 +43,109 @@
     border-radius: 50%;
     background-color: rgb(241, 50, 50);
     box-shadow: 1px 1px 5px rgb(241, 50, 50);
+}
+
+.Audio .volumeBx {
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.Audio .volumeIconBx {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgb(46, 44, 44);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.Audio .volumeIconBx i {
+    color: rgb(63, 63, 63);
+}
+
+.Audio .volumeBx .volumeProgress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 120px;
+    border: 1px solid rgb(207, 191, 191);
+    height: 10px;
+    border-radius: 40px;
+    box-shadow: 0px 0px 4px rgba(135, 129, 129, 0.5);
+    background: rgb(241, 50, 50);
+    cursor: pointer;
+}
+
+.Audio .volumeBx .volumeProgress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(241, 50, 50);
+    box-shadow: 1px 1px 5px rgb(241, 50, 50);
+}
+
+.Audio .volumeBx .audioSpeedBx {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-left: 15px;
+}
+
+.Audio .volumeBx .audioSpeedBx span {
+    position: relative;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    background: rgb(229, 229, 229);
+    /* background: linear-gradient(to right, rgba(0, 0, 1, 0.084), rgba(0, 0, 1, 0.119)); */
+    box-shadow: inset 2px 2px 2px #9b9b9b,
+        inset -2px -2px 2px #d2d0d0;
+}
+
+.Audio .volumeBx .audioSpeedBx .optionSpeed {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+    transform: translateX(-52%);
+    list-style: none;
+    display: none;
+    border-radius: 20px;
+    background: rgb(229, 229, 229);
+    box-shadow: 8px 8px 10px #bebebe,
+        -8px -8px 10px #ffffff;
+}
+
+.Audio .volumeBx .audioSpeedBx .optionSpeed.active {
+    display: flex;
+    flex-direction: row;
+}
+
+.Audio .volumeBx .audioSpeedBx .optionSpeed::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 15px;
+    height: 15px;
+    background: rgb(229, 229, 229);
+    box-shadow: 8px 8px 20px #bebebe,
+        -8px -8px 10px rgb(229, 229, 229);
+}
+
+.Audio .volumeBx .audioSpeedBx .optionSpeed li:nth-child(4) span {
+    margin-right: 0px;
 }

@@ -26,3 +26,36 @@
     object-fit: cover;
     border-radius: 50%;
 }
+
+.PostImageRotate .PostImgBx .playBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+    color: rgba(255, 255, 255, 0.545);
+    transition: 0.3s;
+}
+
+.PostImageRotate .PostImgBx .defaultBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+    color: rgba(255, 255, 255, 0.545);
+}

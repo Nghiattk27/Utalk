@@ -8,7 +8,7 @@ import CommentBx from '../Comment/CommentBx/CommentBx';
 import Audio from '../Audio/Audio';
 import PostImageRotate from '../PostImageRotate/PostImageRotate';
 
-function Post({ post }) {
+function Post({ post, visitorId }) {
 
   const [audioState, setAudioState] = useState("pause");
   return (
@@ -18,7 +18,7 @@ function Post({ post }) {
         <PostImageRotate post_image_path={post.post_image_path} audioState={audioState} setAudioState={setAudioState} />
         <Audio src={post.post_audio_path} audioState={audioState} setAudioState={setAudioState} />
         <div className='postAction'>
-          <Like />
+          <Like visitorId={visitorId} postId={post.id} />
           <CommentButton />
           <Share />
         </div>

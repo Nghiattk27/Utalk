@@ -1,4 +1,4 @@
-import userService from '../service/userServive';
+import userService from '../service/userService';
 import multer from 'multer';
 import path from 'path';
 import { createJWT, verifyToken } from '../middleware/JWTAction';
@@ -149,6 +149,35 @@ let updatePostImage = async (req, res) => {
     // res.send("Tạo bài đăng mới thành công");
 }
 
+let getAllUsers = async (req, res) => {
+    let users = await userService.getAllUsers();
+    return res.json(
+        users,
+    )
+}
+
+let addPostLike = async (req, res) => {
+    let visitorId = req.body.visitorId;
+    let postId = req.body.postId;
+    await userService.addPostLike(visitorId, postId);
+    return res.send("add thanh cong")
+}
+
+let deletePostLike = async (req, res) => {
+    let visitorId = req.body.visitorId;
+    let postId = req.body.postId;
+    await userService.deletePostLike(visitorId, postId);
+    return res.send("xoa thanh cong")
+}
+let countAllPostLike = async (req, res) => {
+    let visitorId = req.query.visitorId;
+    let postId = req.query.postId;
+    let allLike = await userService.countAllPostLike(visitorId, postId);
+    return res.json({
+        amount: allLike.amount,
+        state: allLike.state,
+    })
+}
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
@@ -159,4 +188,8 @@ module.exports = {
     updateAvatar: updateAvatar,
     getVisitorInfo: getVisitorInfo,
     updatePostImage: updatePostImage,
+    getAllUsers: getAllUsers,
+    addPostLike: addPostLike,
+    deletePostLike: deletePostLike,
+    countAllPostLike: countAllPostLike,
 }
