@@ -169,6 +169,7 @@ let deletePostLike = async (req, res) => {
     await userService.deletePostLike(visitorId, postId);
     return res.send("xoa thanh cong")
 }
+
 let countAllPostLike = async (req, res) => {
     let visitorId = req.query.visitorId;
     let postId = req.query.postId;
@@ -178,6 +179,48 @@ let countAllPostLike = async (req, res) => {
         state: allLike.state,
     })
 }
+
+let addPostComment = async (req, res) => {
+    let visitorId = req.body.visitorId;
+    let postId = req.body.postId;
+    let content = req.body.content;
+    const newComment = await userService.addPostComment(visitorId, postId, content);
+    return res.json(newComment)
+}
+
+let deletePostComment = async (req, res) => {
+    let id = req.body.id;
+    await userService.deletePostComment(id);
+    return res.send("xoa comment thanh cong")
+}
+
+let updatePostComment = async (req, res) => {
+    let id = req.body.id;
+    let content = req.body.content;
+    await userService.updatePostComment(id, content);
+    return res.send("cap nhat comment thanh cong")
+}
+
+let getAllPostComment = async (req, res) => {
+    let postId = req.query.postId;
+    let comments = await userService.getAllPostComment(postId);
+    return res.json({
+        comments,
+    })
+}
+
+let getUser = async (req, res) => {
+    let id = req.query.id;
+    let user = await userService.getUserById(id);
+    res.json(user);
+}
+
+let deletePost = async (req, res) => {
+    let postId = req.body.postId;
+    await userService.deletePostById(postId);
+    res.send("xoa bai thanh cong");
+}
+
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
@@ -192,4 +235,10 @@ module.exports = {
     addPostLike: addPostLike,
     deletePostLike: deletePostLike,
     countAllPostLike: countAllPostLike,
+    addPostComment: addPostComment,
+    deletePostComment: deletePostComment,
+    updatePostComment: updatePostComment,
+    getAllPostComment: getAllPostComment,
+    getUser: getUser,
+    deletePost: deletePost,
 }

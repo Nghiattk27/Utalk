@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CreatePost.css';
 import PostImage from '../PostImage/PostImage';
 
-function CreatePost(userId) {
+function CreatePost({ userId, render, setRender, setCreatState }) {
 
     const [file, setFile] = useState();
     const [progressBar, setProgressBar] = useState(0);
@@ -13,6 +13,16 @@ function CreatePost(userId) {
     const [title, setTitle] = useState('');
     const [titleWarning, setTitleWarning] = useState('');
     const [imgFile, setImgFile] = useState({});
+
+    const CreatePostRef = useRef();
+
+    const closeOpenMenus = (e) => {
+        if (CreatePostRef.current && !CreatePostRef.current.contains(e.target)) {
+            setCreatState(false);
+        }
+    }
+
+    document.addEventListener('mousedown', closeOpenMenus);
 
     useEffect(() => {
         console.log(imgFile);
@@ -23,6 +33,7 @@ function CreatePost(userId) {
             preview && URL.revokeObjectURL(preview.preview)
         }
     }, [preview])
+
     const previewFile = (e) => {
 
         let fileTmp = e.target.files[0];
@@ -34,11 +45,12 @@ function CreatePost(userId) {
         setPreview(fileTmp);
 
     }
+
     const uploadPostClick = async () => {
         if (file && imgFile) {
             const data = new FormData();
             data.append("title", title);
-            data.append("userId", userId.userId);
+            data.append("userId", userId);
             data.append("audioFile", file);
             try {
                 const res = await axios.post('http://localhost:8082/api/uploadFile', data,
@@ -48,6 +60,9 @@ function CreatePost(userId) {
                         }
                     }
                 )
+                setCreatState(false);
+                console.log(render);
+                setRender(!render);
                 const baby = res.data;
                 const dataImg = new FormData();
                 dataImg.append("imgFile", imgFile);
@@ -119,7 +134,7 @@ function CreatePost(userId) {
         console.log(e.key);
     }
     return (
-        <div className='CreatePost'>
+        <div className='CreatePost' ref={CreatePostRef}>
             <div className='textBx'>
                 <h2>Chia sẻ một điều gì mới mẻ ?</h2>
             </div>

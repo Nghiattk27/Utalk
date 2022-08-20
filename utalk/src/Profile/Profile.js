@@ -18,6 +18,8 @@ function Profile() {
   const [user, setUser] = useState({});
   const [visitor, setVisitor] = useState();
   const [posts, setPosts] = useState([]);
+  const [render, setRender] = useState(true);
+  const [createState, setCreatState] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,7 +47,8 @@ function Profile() {
       setPosts(res.data);
     }
     getPosts();
-  }, [])
+    console.log(render);
+  }, [render])
 
   return (
     <div className='Profile'>
@@ -65,11 +68,27 @@ function Profile() {
       </div>
       {
         visitor && visitor.userId == user.id &&
-        <CreatePost userId={user.id} />
+        (
+          <div className='openCreatePostBx'>
+            <div className='imgCreateBx'>
+              <img src={user.user_avatar} />
+            </div>
+            <input placeholder='Tạo bài viết mới' className='createInput' readOnly
+              onClick={() => { setCreatState(true) }}></input>
+          </div>
+        )
       }
+
+      {
+        createState &&
+        <div className='createBg'>
+          <CreatePost userId={user.id} render={render} setRender={setRender} setCreatState={setCreatState} />
+        </div>
+      }
+
       {
         visitor && visitor.userId && (
-          posts.map((post) => {
+          [...posts].reverse().map((post) => {
             return <Post post={post} visitorId={visitor.userId} key={post.id} />
           })
         )

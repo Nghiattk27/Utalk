@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CommentBx.css';
+import axios from 'axios';
 import Comment from '../Comment/Comment.js';
 import WriteComment from '../WriteComment/WriteComment.js';
 
-function CommentBx() {
+function CommentBx({ postId, visitorId, post, user, visitor, comments }) {
+
     return (
         <div className='CommentBx'>
-            <WriteComment />
-            <Comment />
-            <Comment />
-            <Comment />
+            {
+                comments &&
+                comments.map((comment) => {
+                    return <Comment comment={comment} key={comment.id} visitorId={visitorId} />
+                })
+            }
         </div>
     )
 }

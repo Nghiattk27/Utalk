@@ -1,6 +1,7 @@
 import db from "../models/index";
 import bcrypt from 'bcryptjs';
 import { Sequelize } from "../models/index";
+import { resolve } from "app-root-path";
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -42,6 +43,7 @@ let handleUserLogin = (username, password) => {
         }
     })
 }
+
 let checkUsername = (username) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -58,6 +60,7 @@ let checkUsername = (username) => {
         }
     })
 }
+
 let createNewAccount = (username, password) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -83,6 +86,7 @@ let createNewAccount = (username, password) => {
         }
     })
 }
+
 let getUserById = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -95,6 +99,7 @@ let getUserById = (userId) => {
         }
     })
 }
+
 let getVisitorById = (visitorId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -107,6 +112,7 @@ let getVisitorById = (visitorId) => {
         }
     })
 }
+
 let createNewUser = (username) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -129,6 +135,7 @@ let createNewUser = (username) => {
         }
     })
 }
+
 let hashPassword = (password) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -139,6 +146,7 @@ let hashPassword = (password) => {
         }
     })
 }
+
 let updateUserInfo = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -161,6 +169,7 @@ let updateUserInfo = (data) => {
         }
     })
 }
+
 let CreateNewPost = (post) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -177,6 +186,7 @@ let CreateNewPost = (post) => {
         }
     })
 }
+
 let getPostsbyUserId = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -190,6 +200,7 @@ let getPostsbyUserId = (userId) => {
         }
     })
 }
+
 let updateUserAvatar = (avatar, userId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -210,6 +221,7 @@ let updateUserAvatar = (avatar, userId) => {
         }
     })
 }
+
 let updatePostImage = (fileImage, postId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -229,6 +241,7 @@ let updatePostImage = (fileImage, postId) => {
         }
     })
 }
+
 let getAllUsers = () => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -240,6 +253,7 @@ let getAllUsers = () => {
 
     })
 }
+
 let addPostLike = (visitorId, postId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -254,6 +268,7 @@ let addPostLike = (visitorId, postId) => {
         }
     })
 }
+
 let deletePostLike = (visitorId, postId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -269,6 +284,7 @@ let deletePostLike = (visitorId, postId) => {
         }
     })
 }
+
 let countAllPostLike = (visitorId, postId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -293,6 +309,101 @@ let countAllPostLike = (visitorId, postId) => {
         }
     })
 }
+
+let addPostComment = (visitorId, postId, content) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const newComment = await db.Post_comments.create({
+                content: content,
+                user_id: visitorId,
+                post_id: postId,
+            })
+            resolve(newComment);
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let deletePostComment = (id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await db.Post_comments.destroy(
+                {
+                    where: {
+                        id: id,
+                    }
+                })
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let updatePostComment = (id, content) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let comment = await db.Post_comments.findOne({
+                where: { id: id }
+            })
+            if (comment) {
+                comment.content = content
+                await comment.save();
+                resolve();
+            }
+            else {
+                resolve();
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let getAllPostComment = (postId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let allComment = await db.Post_comments.findAll({
+                where: {
+                    post_id: postId
+                }
+            });
+            resolve(allComment)
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let deletePostById = (postId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await db.Posts.destroy({
+                where: {
+                    id: postId,
+                }
+            })
+
+            await db.Post_likes.destroy({
+                where: {
+                    post_id: postId,
+                }
+            })
+
+            await db.Post_comments.destroy({
+                where: {
+                    post_id: postId,
+                }
+            })
+
+            resolve();
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     createNewAccount: createNewAccount,
@@ -307,4 +418,9 @@ module.exports = {
     addPostLike: addPostLike,
     deletePostLike: deletePostLike,
     countAllPostLike: countAllPostLike,
+    addPostComment: addPostComment,
+    deletePostComment: deletePostComment,
+    updatePostComment: updatePostComment,
+    getAllPostComment: getAllPostComment,
+    deletePostById: deletePostById,
 }

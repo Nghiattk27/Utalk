@@ -36,6 +36,12 @@ let initWebRoutes = (app) => {
     router.post('/api/addPostLike', userController.addPostLike)
     router.post('/api/deletePostLike', userController.deletePostLike)
     router.get('/api/countAllPostLike', userController.countAllPostLike)
+    router.post('/api/addPostComment', userController.addPostComment)
+    router.post('/api/deletePostComment', userController.deletePostComment)
+    router.put('/api/updatePostComment', userController.updatePostComment)
+    router.get('/api/getAllPostComment', userController.getAllPostComment)
+    router.get('/api/getUser', userController.getUser)
+    router.post('/api/deletePost', userController.deletePost)
 
     return app.use("/", router);
 }

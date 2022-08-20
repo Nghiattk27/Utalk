@@ -1,0 +1,47 @@
+.TimeAndDelete {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* background: rgb(131, 130, 130); */
+    color: rgb(65, 64, 64);
+    align-items: center;
+    font-size: 18px;
+}
+
+.TimeAndDelete i {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px 15px;
+    background: none;
+    border-radius: 20px;
+}
+
+.TimeAndDelete i:hover {
+    background: rgb(212, 211, 211);
+}
+
+.TimeAndDelete .editTimeAndDeleteBx {
+    position: relative;
+}
+
+.TimeAndDelete .editTimeAndDeleteBx h4 {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    padding: 5px 10px;
+    background: rgb(237, 77, 77);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(237, 235, 235);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.TimeAndDelete .editTimeAndDeleteBx h4:hover {
+    background: rgb(205, 3, 3);
+    color: rgb(255, 255, 255);
+}

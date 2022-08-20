@@ -4,7 +4,7 @@
     border: 1px solid rgb(208, 207, 207);
     margin: 80px 0;
     display: flex;
-    padding: 20px 20px;
+    padding: 20px 20px 0px 20px;
     box-shadow: -6px -6px 15px rgba(255, 255, 255, 0.8),
         -12px -12px 20px rgba(255, 255, 255, 0.8),
         6px 6px 12px rgba(0, 0, 0, 0.2),
@@ -41,4 +41,18 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 60px;
+}
+
+.Post .content .writeComment {
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.Post .content .timeAndDeleteBx {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
 }
