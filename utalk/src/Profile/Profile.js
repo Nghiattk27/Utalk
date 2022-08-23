@@ -46,7 +46,6 @@ function Profile() {
       setPosts(res.data);
     }
     getPosts();
-    console.log(render);
   }, [render])
 
   return (

@@ -34,7 +34,6 @@ function UserForm() {
                 email: email,
             })
             navigate(`/Profile?id=${query.get("id")}`);
-            console.log(res.data.message)
 
         }
     }

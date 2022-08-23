@@ -25,7 +25,6 @@ function CreatePost({ userId, render, setRender, setCreatState }) {
     document.addEventListener('mousedown', closeOpenMenus);
 
     useEffect(() => {
-        console.log(imgFile);
     }, [imgFile])
 
     useEffect(() => {
@@ -61,13 +60,11 @@ function CreatePost({ userId, render, setRender, setCreatState }) {
                     }
                 )
                 setCreatState(false);
-                console.log(render);
                 setRender(!render);
                 const baby = res.data;
                 const dataImg = new FormData();
                 dataImg.append("imgFile", imgFile);
                 dataImg.append("postId", baby.newPost.id);
-                console.log(imgFile, baby.newPost.id);
                 const abc = await axios.post('http://localhost:8082/api/uploadPostImage', dataImg,
                     {
                         headers: {
@@ -102,7 +99,6 @@ function CreatePost({ userId, render, setRender, setCreatState }) {
                         break;
                     }
                 }
-                console.log(tmp);
                 fileName = fileName.substring(0, 20) + '...' + tmp;
             }
             return <h3>{fileName}</h3>
@@ -131,7 +127,6 @@ function CreatePost({ userId, render, setRender, setCreatState }) {
             setTitleWarning('');
             setTitle(e.target.value);
         }
-        console.log(e.key);
     }
     return (
         <div className='CreatePost' ref={CreatePostRef}>

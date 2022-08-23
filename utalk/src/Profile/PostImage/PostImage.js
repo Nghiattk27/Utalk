@@ -9,12 +9,10 @@ function PostImage({ setImgFile }) {
     const imageFileLoad = () => {
         URL.revokeObjectURL(imgSrc);
         // setImgFile(imgSrc);
-        // console.log(imgSrc);
     }
     const imageFileInput = (e) => {
         setImgSrc(URL.createObjectURL(e.target.files[0]));
         setImgFile(e.target.files[0]);
-        console.log(URL.createObjectURL(e.target.files[0]));
         imageFileLoad();
     }
 

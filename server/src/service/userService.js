@@ -77,7 +77,6 @@ let createNewAccount = (username, password) => {
                 let user = await createNewUser(username);
                 account.user_id = user.id;
                 await account.save();
-                console.log(account);
             }
             resolve('A new account created')
         } catch (e) {

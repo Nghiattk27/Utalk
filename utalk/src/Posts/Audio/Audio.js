@@ -60,7 +60,6 @@ function Audio({ src, audioState, setAudioState }) {
         audioRef.current.currentTime = currentTime;
         setTimeNow(currentTime);
         progessRef.current.style.background = `linear-gradient(to right,rgb(241, 50, 50) 0%, rgb(241, 50, 50) ${progess}%,  #fff ${progess}%, #fff 100%)`;
-        console.log(progess);
         if (progess == 100) {
             // button.current.className = "fa-solid fa-play";
             // button.current.style.color = "rgb(255, 55, 55)";

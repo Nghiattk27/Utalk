@@ -51,9 +51,6 @@ class MyEditor extends React.Component {
     const blob = await response.blob();
     const file = new File([blob], 'image.jpg', { type: blob.type });
 
-    console.log(file);
-    console.log(this.state.img);
-
     if (file && this.state.img) {
       const data = new FormData();
       data.append("file", file);
@@ -66,7 +63,6 @@ class MyEditor extends React.Component {
             }
           }
         )
-        console.log(res.data);
         this.setState({
           done: !this.state.done,
         })

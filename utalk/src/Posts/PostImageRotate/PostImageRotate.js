@@ -26,7 +26,6 @@ function PostImageRotate({ post_image_path, audioState, setAudioState }) {
         PostImgRotate.current.pause();
         if (state == "play") PostImgRotate.current.play();
         else PostImgRotate.current.pause();
-        console.log(state);
     }, [])
 
     useEffect(() => {

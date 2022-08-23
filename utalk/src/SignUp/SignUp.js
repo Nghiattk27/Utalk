@@ -21,7 +21,6 @@ function SignUp({ view, signUpClick }) {
           username: username,
           password: password,
         })
-        console.log(res.data);
         setWarning(res.data);
         if (res.data == 'A new account created') {
           setUsername('');
@@ -36,7 +35,6 @@ function SignUp({ view, signUpClick }) {
         }
       }
       else {
-        console.log('xác nhận mật khẩu không trùng khớp');
         setWarning('xác nhận mật khẩu không trùng khớp');
         warningRef.current.className = 'warning';
         warningIcon.current.className = 'fa-solid fa-circle-exclamation';
@@ -45,7 +43,6 @@ function SignUp({ view, signUpClick }) {
       console.log(e.response)
     }
   }
-  console.log(view);
   const singUpRef = useRef('');
 
   useEffect(() => {

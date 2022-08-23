@@ -24,7 +24,6 @@ function Newfeed() {
                     userId: res.data.visitor.userId,
                 }
             })
-            console.log(followers.data);
             if (followers.data) {
                 followers.data.map(async (follower) => {
                     const res = await axios.get('http://localhost:8082/api/getPosts', {
@@ -53,10 +52,8 @@ function Newfeed() {
             if (arr[i].id != tmpId) {
                 tmpId = arr[i].id;
                 tmp.push(arr[i]);
-                console.log(tmpId);
             }
             else {
-                console.log(1);
             }
         }
         return tmp;

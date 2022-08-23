@@ -28,7 +28,6 @@ function Login() {
         username: username,
         password: password,
       })
-      console.log(res.data.token);
       setCookie("token", res.data.token, { path: '/' });
 
       setWarning(res.data.message);

@@ -7,7 +7,6 @@ import SearchHeader from './SearchHeader/SearchHeader';
 
 function Header(userId) {
 
-    console.log(userId.userId);
     const [user, setUser] = useState({});
     const [control, setControl] = useState(false);
 
