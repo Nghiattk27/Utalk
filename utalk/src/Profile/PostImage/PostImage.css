@@ -45,12 +45,13 @@
     color: rgba(147, 147, 147, 0.394);
 }
 
-/* .PostImage .postImageBx:hover .hoverEffect {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .PostImage .postImageBx #uploadImg {
     display: none;
+}
+
+@media (max-width: 950px) {
+    .PostImage {
+        width: 150px;
+        height: 150px;
+    }
 }

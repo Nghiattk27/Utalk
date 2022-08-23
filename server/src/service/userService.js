@@ -1,7 +1,6 @@
 import db from "../models/index";
 import bcrypt from 'bcryptjs';
 import { Sequelize } from "../models/index";
-import { resolve } from "app-root-path";
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -404,6 +403,72 @@ let deletePostById = (postId) => {
     })
 }
 
+let addFollower = (userId, followerId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await db.Followers.create({
+                user_id: userId,
+                follower_id: followerId,
+            })
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let checkFollower = (userId, followerId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let check = await db.Followers.findOne(
+                {
+                    where: {
+                        user_id: userId,
+                        follower_id: followerId,
+                    }
+                })
+            if (check === null) (
+                resolve(false)
+            )
+            else resolve(true);
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let deleteFollower = (userId, followerId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await db.Followers.destroy({
+                where: {
+                    user_id: userId,
+                    follower_id: followerId,
+                }
+            })
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let getFollower = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const followers = await db.Followers.findAll(
+                {
+                    where: {
+                        follower_id: userId
+                    }
+                }
+            )
+            resolve(followers);
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     createNewAccount: createNewAccount,
@@ -423,4 +488,8 @@ module.exports = {
     updatePostComment: updatePostComment,
     getAllPostComment: getAllPostComment,
     deletePostById: deletePostById,
+    addFollower: addFollower,
+    checkFollower: checkFollower,
+    deleteFollower: deleteFollower,
+    getFollower: getFollower,
 }

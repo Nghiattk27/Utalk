@@ -59,10 +59,10 @@ function Post({ post, visitorId }) {
   return (
     <div className='Post' ref={PostRef}>
       <div className='content'>
-        <h2 className='title'>{post.post_title}</h2>
         <div className='timeAndDeleteBx'>
-          <TimeAndDelete post={post} PostRef={PostRef} />
+          <TimeAndDelete post={post} PostRef={PostRef} user={user} />
         </div>
+        <h2 className='title'>{post.post_title}</h2>
         <PostImageRotate post_image_path={post.post_image_path} audioState={audioState} setAudioState={setAudioState} />
         <Audio src={post.post_audio_path} audioState={audioState} setAudioState={setAudioState} />
         <div className='postAction'>

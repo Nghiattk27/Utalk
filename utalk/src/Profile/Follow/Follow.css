@@ -1,0 +1,27 @@
+.Follow {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    background: rgb(248, 27, 27);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.Follow h2 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+@media (max-width: 950px) {
+    .Follow {
+        width: 150px;
+        height: 45px;
+    }
+
+    .Follow h2 {
+        font-size: 17px;
+    }
+}

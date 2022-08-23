@@ -221,6 +221,32 @@ let deletePost = async (req, res) => {
     res.send("xoa bai thanh cong");
 }
 
+let addFollower = async (req, res) => {
+    let userId = req.body.userId;
+    let followerId = req.body.followerId;
+    await userService.addFollower(userId, followerId);
+    res.send("Follow thanh cong")
+}
+
+let checkFollower = async (req, res) => {
+    let userId = req.query.userId;
+    let followerId = req.query.followerId;
+    let check = await userService.checkFollower(userId, followerId);
+    res.json(check);
+}
+
+let deleteFollower = async (req, res) => {
+    let userId = req.body.userId;
+    let followerId = req.body.followerId;
+    await userService.deleteFollower(userId, followerId);
+    res.send("xoa follower thanh cong")
+}
+
+let getFollower = async (req, res) => {
+    let userId = req.query.userId;
+    let followers = await userService.getFollower(userId);
+    res.json(followers);
+}
 module.exports = {
     handleLogin: handleLogin,
     getNewAccount: getNewAccount,
@@ -241,4 +267,8 @@ module.exports = {
     getAllPostComment: getAllPostComment,
     getUser: getUser,
     deletePost: deletePost,
+    addFollower: addFollower,
+    checkFollower: checkFollower,
+    deleteFollower: deleteFollower,
+    getFollower: getFollower,
 }

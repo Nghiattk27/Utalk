@@ -43,11 +43,21 @@ function Header(userId) {
         setControl(true);
     }
 
+    const newFeedHandleClick = () => {
+        navigate(`/Newfeed`);
+        navigate(0);
+    }
+
+    const loginHandleClick = () => {
+        navigate(`/`);
+        navigate(0);
+    }
+
     return (
         <div className='Header'>
             <SearchHeader />
             <div className='newfeedBx'>
-                <h2>NewFeed</h2>
+                <h2 onClick={newFeedHandleClick}>NewFeed</h2>
             </div>
             <div className='socketBx'>
                 <div className='notificationBx'>
@@ -67,7 +77,7 @@ function Header(userId) {
                                         <i className="fa-solid fa-gear"></i>
                                         <h2>Thông tin cá nhân</h2>
                                     </li>
-                                    <li>
+                                    <li onClick={loginHandleClick}>
                                         <i className="fa-solid fa-right-from-bracket"></i>
                                         <h2>Đăng xuất</h2>
                                     </li>

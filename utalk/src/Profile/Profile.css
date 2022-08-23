@@ -126,3 +126,38 @@
     justify-content: center;
     align-items: center;
 }
+
+.Profile .followBx {
+    position: relative;
+    margin-top: 30px;
+}
+
+@media (max-width: 950px) {
+    .Profile .avatar {
+        width: 150px;
+    }
+
+    .Profile .avatar::after {
+        width: 160px;
+        height: 160px;
+    }
+
+    .Profile .imgBx h2 {
+        font-size: 22px;
+    }
+
+    .Profile .openCreatePostBx {
+        margin-top: 50px;
+    }
+
+    .Profile .openCreatePostBx .createInput {
+        max-width: 550px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .Profile .openCreatePostBx .imgCreateBx {
+        width: 50px;
+        height: 50px;
+    }
+}

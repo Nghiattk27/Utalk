@@ -10,6 +10,7 @@ import Login from "./Login/Login.js";
 import Profile from "./Profile/Profile";
 import UserForm from './UserForm/UserForm';
 import MyEditorFunction from './MyEditor/MyEditorFunction';
+import Newfeed from './Newfeed/Newfeed/Newfeed';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Userform" element={<UserForm />} />
           <Route path="/UpdateAvatar" element={<MyEditorFunction />} />
+          <Route path="/Newfeed" element={<Newfeed />} />
         </Routes>
       </div>
     </BrowserRouter>

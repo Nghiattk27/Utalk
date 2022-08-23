@@ -7,13 +7,12 @@ import Post from '../Posts/Post/Post.js';
 import CreatePost from './CreatePost/CreatePost';
 import Header from '../Header/Header/Header';
 import userImg from '../images/userImg.png';
+import Follow from './Follow/Follow';
 
 function Profile() {
 
   let location = useLocation();
   let query = new URLSearchParams(location.search);
-
-  // let { userId } = useParams();
 
   const [user, setUser] = useState({});
   const [visitor, setVisitor] = useState();
@@ -66,6 +65,13 @@ function Profile() {
         </div>
         <h2>{user.first_name + " " + user.last_name}</h2>
       </div>
+      {
+        visitor && user && visitor.userId != user.id && (
+          <div className='followBx'>
+            <Follow userId={user.id} visitorId={visitor.userId} />
+          </div>
+        )
+      }
       {
         visitor && visitor.userId == user.id &&
         (

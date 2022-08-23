@@ -59,3 +59,18 @@
     font-size: 55px;
     color: rgba(255, 255, 255, 0.545);
 }
+
+@media (max-width: 950px) {
+    .PostImageRotate {
+        width: 150px;
+        height: 150px;
+    }
+
+    .PostImageRotate .PostImgBx .defaultBg {
+        font-size: 40px;
+    }
+
+    .PostImageRotate .PostImgBx .playBg {
+        font-size: 40px;
+    }
+}

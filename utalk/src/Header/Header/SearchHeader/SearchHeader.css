@@ -87,3 +87,25 @@
     background: rgb(186, 185, 185);
     border-radius: 10px;
 }
+
+@media (max-width: 950px) {
+    .SearchHeader input {
+        width: 65%;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .SearchHeader input:focus {
+        width: 100%;
+    }
+
+    .SearchHeader .userList {
+        width: 100%;
+    }
+
+    .SearchHeader .userList li {
+        height: 50px;
+        font-size: 16px;
+        padding-left: 33px;
+    }
+}

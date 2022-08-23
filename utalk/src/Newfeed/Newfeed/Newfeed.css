@@ -1,0 +1,27 @@
+.Newfeed {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(to top, rgb(241, 237, 237), rgb(253, 250, 250));
+}
+
+.Newfeed .postBxofNewfeed {
+    position: relative;
+    width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Newfeed .noOne {
+    position: absolute;
+    width: auto;
+    left: 50%;
+    top: 200px;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 950px) {
+    .Newfeed .postBxofNewfeed {
+        width: 650px;
+    }
+}

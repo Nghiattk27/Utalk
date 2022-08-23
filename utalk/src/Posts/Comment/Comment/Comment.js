@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Comment.css';
 import axios from 'axios';
 import ava from '../../images/ava.png';
+import { useNavigate } from 'react-router-dom';
 
 function Comment({ comment, visitorId }) {
 
@@ -9,6 +10,7 @@ function Comment({ comment, visitorId }) {
     const CommenetRef = useRef();
     const [textAreaUpdateAble, setTextAreaUpdateAble] = useState(true);
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         textAreaRef.current.style.height = "5px";
@@ -89,13 +91,18 @@ function Comment({ comment, visitorId }) {
 
     }
 
+    const homePageOnClick = () => {
+        navigate(`/Profile?id=${user.id}`);
+        navigate(0);
+    }
+
     return (
         <div className='Comment' ref={CommenetRef}>
             <div className='commentAvatar'>
-                <img src={user.user_avatar} />
+                <img src={user.user_avatar} onClick={homePageOnClick} />
             </div>
             <div className='commentContent'>
-                <h2>Nghia Pham</h2>
+                <h2>{user.first_name + " " + user.last_name}</h2>
                 <textarea spellCheck="false" ref={textAreaRef}
                     onChange={textAreaOnInput}
                     readOnly={textAreaUpdateAble} onKeyDown={(e) => textAreaHandleKeyDown(e)}>

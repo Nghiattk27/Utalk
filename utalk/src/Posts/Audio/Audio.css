@@ -149,3 +149,42 @@
 .Audio .volumeBx .audioSpeedBx .optionSpeed li:nth-child(4) span {
     margin-right: 0px;
 }
+
+@media (max-width: 950px) {
+    .Audio .progressBar .progress {
+        height: 9px;
+    }
+
+    .Audio .progressBar .progress::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+    }
+
+    .Audio .progressBar span {
+        font-size: 15px;
+    }
+
+    .Audio .volumeIconBx i {
+        font-size: 13px;
+    }
+
+    .Audio .volumeIconBx {
+        width: 30px;
+        height: 30px;
+    }
+
+    .Audio .volumeBx .volumeProgress {
+        height: 8px;
+    }
+
+    .Audio .volumeBx .volumeProgress::-webkit-slider-thumb {
+        width: 15px;
+        height: 15px;
+    }
+
+    .Audio .volumeBx .audioSpeedBx span {
+        padding: 4px 12px;
+        font-size: 14px;
+        margin-right: 8px;
+    }
+}

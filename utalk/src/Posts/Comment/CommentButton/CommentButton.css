@@ -17,3 +17,11 @@
     box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.8),
         -5px -5px 5px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 950px) {
+    .CommentButton {
+        width: 140px;
+        height: 45px;
+        font-size: 12px;
+    }
+}

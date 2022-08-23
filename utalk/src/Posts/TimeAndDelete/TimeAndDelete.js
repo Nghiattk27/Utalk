@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './TimeAndDelete.css';
 
-function TimeAndDelete({ post, PostRef }) {
+function TimeAndDelete({ post, PostRef, user }) {
 
     const [editClickState, setEditClickState] = useState(false);
     const deleteRef = useRef();
+    const navigate = useNavigate();
 
     const closeOpenMenus = (e) => {
         if (deleteRef.current && editClickState && !deleteRef.current.contains(e.target)) {
@@ -49,8 +51,20 @@ function TimeAndDelete({ post, PostRef }) {
         PostRef.current.style.display = 'none';
     }
 
+
+    const homePageOnClick = () => {
+        navigate(`/Profile?id=${user.id}`);
+        navigate(0);
+    }
+
     return (
         <div className='TimeAndDelete'>
+            <div className='userBx'>
+                <div className='imgTimeBx'>
+                    <img src={user.user_avatar} onClick={homePageOnClick} />
+                </div>
+                <h3>{user.first_name + " " + user.last_name}</h3>
+            </div>
             <h4>{processTimeDate(post.createdAt)}</h4>
             <div className='editTimeAndDeleteBx'>
                 <i className="fa-solid fa-ellipsis" onClick={() => { setEditClickState(true) }}></i>

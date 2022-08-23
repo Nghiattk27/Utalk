@@ -5,6 +5,7 @@
     z-index: 100;
     background: #fff;
     display: inline-block;
+    top: 0;
 }
 
 .Header .newfeedBx {
@@ -133,4 +134,24 @@
 
 .Header .socketBx .profileBx .control ul li h2 {
     font-size: 20px;
+}
+
+@media (max-width: 950px) {
+    .Header {
+        height: 55px;
+    }
+
+    .Header .socketBx .profileBx {
+        width: 48px;
+        height: 48px;
+    }
+
+    .Header .socketBx .notificationBx {
+        width: 48px;
+        height: 48px;
+    }
+
+    .Header .newfeedBx h2 {
+        font-size: 25px;
+    }
 }

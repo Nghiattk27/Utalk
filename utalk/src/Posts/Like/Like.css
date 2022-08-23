@@ -80,3 +80,22 @@
     font-size: 20px;
     color: rgba(0, 0, 0, 0.693);
 }
+
+@media (max-width: 950px) {
+    .Like .amountLike {
+        font-size: 17px;
+    }
+
+    .Like {
+        width: 140px;
+        height: 45px;
+    }
+
+    .Like button .likeImgBx {
+        width: 31px;
+    }
+
+    .Like .likeIconUp {
+        width: 31px;
+    }
+}

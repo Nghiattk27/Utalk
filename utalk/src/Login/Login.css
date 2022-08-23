@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .Login .content {
@@ -149,4 +150,94 @@
 
 .Login .content .loginform .info .warning.accepted {
     color: rgb(56, 229, 56);
+}
+
+@media (max-width: 1075px) {
+    .Login .content .loginform .info {
+        width: 400px;
+    }
+
+    .Login .content .logo {
+        width: 320px;
+    }
+
+    .Login .content .loginform .info img {
+        width: 220px;
+    }
+
+    .Login .content .loginform .info h2 {
+        font-size: 22px;
+    }
+
+    .Login .content .loginform .info input {
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .Login .content .loginform .info .warning h3 {
+        font-size: 19px;
+    }
+
+    .Login .content .loginform .info button {
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .Login .content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 950px) {
+    .Login .content .logo img {
+        display: none;
+    }
+
+    .Login .content .logo {
+        display: none;
+    }
+
+    .Login .content .loginform {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .Login .content .loginform .info img {
+        width: 120px;
+    }
+
+    .Login .content .loginform .info {
+        min-width: 320px;
+        left: -10px;
+    }
+
+    .Login .content .loginform {
+        width: 100%;
+    }
+
+    .Login .content .loginform .info h2 {
+        font-size: 18px;
+    }
+
+    .Login .content .loginform .info input {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .Login .content .loginform .info i {
+        transform: translate(15px, 27px);
+    }
+
+    .Login .content .loginform .info .warning h3 {
+        font-size: 17px;
+    }
+
+    .Login .content .loginform .info button {
+        height: 40px;
+    }
+
+    .Login .content .loginform .info button {
+        font-size: 17px;
+    }
 }

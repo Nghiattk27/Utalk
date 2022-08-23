@@ -20,7 +20,7 @@ let initWebRoutes = (app) => {
     router.post('/post-crud', homeController.postCRUD)
     router.get('/get-crud', homeController.displayGetCRUD)
     router.get('/edit-crud', homeController.getEditCRUD)
-    router.put('/put-crud', homeController.putCRUD);
+    router.put('/put-crud', homeController.putCRUD)
     router.post('/delete-crud', homeController.deleteCRUD)
 
     router.post('/api/login', userController.handleLogin)
@@ -42,6 +42,10 @@ let initWebRoutes = (app) => {
     router.get('/api/getAllPostComment', userController.getAllPostComment)
     router.get('/api/getUser', userController.getUser)
     router.post('/api/deletePost', userController.deletePost)
+    router.post('/api/addFollower', userController.addFollower)
+    router.get('/api/checkFollower', userController.checkFollower)
+    router.post('/api/deleteFollower', userController.deleteFollower)
+    router.get('/api/getFollower', userController.getFollower)
 
     return app.use("/", router);
 }
