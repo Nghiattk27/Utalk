@@ -185,11 +185,11 @@ let CreateNewPost = (post) => {
     })
 }
 
-let getPostsbyUserId = (userId) => {
+let getPostsbyUserId = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
             let posts = await db.Posts.findAll({
-                where: { user_id: userId }
+                where: { user_id: id }
             })
             resolve(posts);
         }

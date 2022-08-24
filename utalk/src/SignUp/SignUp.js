@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useRef, useEffect } from 'react';
 import './SignUp.css';
 import signup from './images/signup.png';
-const url = 'http://localhost:8082/api/signup';
+const url = 'https://utalk-backend-nodejs.herokuapp.com/api/signup';
 
 function SignUp({ view, signUpClick }) {
 

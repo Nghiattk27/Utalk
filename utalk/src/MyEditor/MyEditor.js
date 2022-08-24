@@ -56,7 +56,7 @@ class MyEditor extends React.Component {
       data.append("file", file);
       data.append("userId", this.props.userId);
       try {
-        const res = await axios.post('http://localhost:8082/api/uploadAvatar', data,
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/uploadAvatar', data,
           {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'

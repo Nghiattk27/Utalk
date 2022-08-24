@@ -21,7 +21,7 @@ function Post({ post, visitorId }) {
 
   useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get('http://localhost:8082/api/getUser', {
+      const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getUser', {
         params: {
           id: post.user_id
         }
@@ -33,7 +33,7 @@ function Post({ post, visitorId }) {
 
   useEffect(() => {
     const getVisitor = async () => {
-      const res = await axios.get('http://localhost:8082/api/getUser', {
+      const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getUser', {
         params: {
           id: visitorId,
         }
@@ -45,7 +45,7 @@ function Post({ post, visitorId }) {
 
   useEffect(() => {
     const getAllcomment = async () => {
-      const comment = await axios.get('http://localhost:8082/api/getAllPostComment', {
+      const comment = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getAllPostComment', {
         params: {
           postId: post.id,
         }

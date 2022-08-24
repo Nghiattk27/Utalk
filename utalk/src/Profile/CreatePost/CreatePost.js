@@ -52,7 +52,7 @@ function CreatePost({ userId, render, setRender, setCreatState }) {
             data.append("userId", userId);
             data.append("audioFile", file);
             try {
-                const res = await axios.post('http://localhost:8082/api/uploadFile', data,
+                const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/uploadFile', data,
                     {
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,7 +65,7 @@ function CreatePost({ userId, render, setRender, setCreatState }) {
                 const dataImg = new FormData();
                 dataImg.append("imgFile", imgFile);
                 dataImg.append("postId", baby.newPost.id);
-                const abc = await axios.post('http://localhost:8082/api/uploadPostImage', dataImg,
+                const abc = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/uploadPostImage', dataImg,
                     {
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'

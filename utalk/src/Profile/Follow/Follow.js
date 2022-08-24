@@ -9,7 +9,7 @@ function Follow({ userId, visitorId }) {
 
     useEffect(() => {
         const check = async () => {
-            const res = await axios.get('http://localhost:8082/api/checkFollower', {
+            const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/checkFollower', {
                 params: {
                     userId: userId,
                     followerId: visitorId,
@@ -28,14 +28,14 @@ function Follow({ userId, visitorId }) {
     }, [])
 
     const addFollower = async () => {
-        const res = await axios.post('http://localhost:8082/api/addFollower', {
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/addFollower', {
             userId: userId,
             followerId: visitorId,
         })
     }
 
     const deleteFollower = async () => {
-        const res = await axios.post('http://localhost:8082/api/deleteFollower', {
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/deleteFollower', {
             userId: userId,
             followerId: visitorId,
         })

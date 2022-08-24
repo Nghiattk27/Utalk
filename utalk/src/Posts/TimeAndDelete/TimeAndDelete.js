@@ -16,7 +16,7 @@ function TimeAndDelete({ post, PostRef, user }) {
     }
 
     const deletePost = async (id) => {
-        const res = await axios.post('http://localhost:8082/api/deletePost', {
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/deletePost', {
             postId: id,
         })
     }

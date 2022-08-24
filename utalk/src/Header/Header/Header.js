@@ -5,7 +5,7 @@ import axios from 'axios';
 import './Header.css';
 import SearchHeader from './SearchHeader/SearchHeader';
 
-function Header(userId) {
+function Header({ userId }) {
 
     const [user, setUser] = useState({});
     const [control, setControl] = useState(false);
@@ -23,9 +23,9 @@ function Header(userId) {
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await axios.get('http://localhost:8082/api/getVisitorInfo', {
+            const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getVisitorInfo', {
                 params: {
-                    id: userId.userId,
+                    id: userId,
                 },
             })
             setUser(res.data.user);
@@ -34,7 +34,7 @@ function Header(userId) {
     }, [])
 
     const homePageOnClick = () => {
-        navigate(`/Profile?id=${userId.userId}`);
+        navigate(`/Profile?id=${userId}&visitorId=${userId}`);
         navigate(0);
     }
 
@@ -43,7 +43,7 @@ function Header(userId) {
     }
 
     const newFeedHandleClick = () => {
-        navigate(`/Newfeed`);
+        navigate(`/Newfeed?id=${userId}`);
         navigate(0);
     }
 
@@ -54,7 +54,7 @@ function Header(userId) {
 
     return (
         <div className='Header'>
-            <SearchHeader />
+            <SearchHeader visitorId={userId} />
             <div className='newfeedBx'>
                 <h2 onClick={newFeedHandleClick}>NewFeed</h2>
             </div>

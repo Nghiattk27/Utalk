@@ -4,31 +4,34 @@ import './Newfeed.css'
 import Header from '../../Header/Header/Header';
 import Post from '../../Posts/Post/Post';
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 function Newfeed() {
 
-    const [userId, setUserId] = useState();
+    let location = useLocation();
+    let query = new URLSearchParams(location.search);
+
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await axios.get('http://localhost:8082/api/getUserInfo', {
+            // const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getUser', {
+            //     params: {
+            //         id: userId,
+            //     }
+            // })
+            // setUserId(res.data.id)
+            const followers = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getFollower', {
                 params: {
-                    id: 0,
-                },
-                withCredentials: true,
-            })
-            setUserId(res.data.visitor.userId);
-            const followers = await axios.get('http://localhost:8082/api/getFollower', {
-                params: {
-                    userId: res.data.visitor.userId,
+                    userId: query.get('id'),
                 }
             })
+
             if (followers.data) {
                 followers.data.map(async (follower) => {
-                    const res = await axios.get('http://localhost:8082/api/getPosts', {
+                    const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getPosts', {
                         params: {
-                            userId: follower.user_id,
+                            id: follower.user_id,
                         },
                     })
                     res.data.map(newPost => {
@@ -63,8 +66,8 @@ function Newfeed() {
         <div className='Newfeed'>
             <h2>wow</h2>
             {
-                userId && (
-                    <Header userId={userId} />
+                query.get('id') && (
+                    <Header userId={query.get('id')} />
                 )
             }
             {
@@ -76,10 +79,10 @@ function Newfeed() {
             }
             <div className='postBxofNewfeed'>
                 {
-                    posts && userId && (
+                    posts && query.get('id') && (
                         uniqueArray(posts.sort((a, b) => postsHandleSort(a, b))).map(
                             post => {
-                                return <Post post={post} visitorId={userId} />
+                                return <Post post={post} visitorId={query.get('id')} />
                             }
                         )
                     )

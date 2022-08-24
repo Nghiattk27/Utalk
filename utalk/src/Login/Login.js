@@ -24,11 +24,11 @@ function Login() {
 
   const loginClick = async () => {
     try {
-      const res = await axios.post('http://localhost:8082/api/login', {
+      const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/login', {
         username: username,
         password: password,
       })
-      setCookie("token", res.data.token, { path: '/' });
+      // setCookie("token", res.data.token, { path: '/' });
 
       setWarning(res.data.message);
       if (res.data.message === 'Đăng nhập thành công') {
@@ -36,7 +36,7 @@ function Login() {
           navigate(`/UserForm?id=${res.data.userData.id}`)
         }
         else {
-          navigate(`/Profile?id=${res.data.userData.id}`);
+          navigate(`/Profile?id=${res.data.userData.id}&visitorId=${res.data.userData.id}`);
         }
         warningRef.current.className = 'warning accepted';
         warningIcon.current.className = 'fa-solid fa-circle-check';

@@ -13,7 +13,7 @@ function Like({ visitorId, postId }) {
 
     useEffect(() => {
         const getAllLike = async () => {
-            const res = await axios.get('http://localhost:8082/api/countAllPostLike', {
+            const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/countAllPostLike', {
                 params: {
                     visitorId: visitorId,
                     postId: postId,
@@ -28,14 +28,14 @@ function Like({ visitorId, postId }) {
     }, [])
 
     const addPostLike = async () => {
-        const res = await axios.post('http://localhost:8082/api/addPostLike', {
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/addPostLike', {
             visitorId: visitorId,
             postId: postId,
         })
     }
 
     const deletePostLike = async () => {
-        const res = await axios.post('http://localhost:8082/api/deletePostLike', {
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/deletePostLike', {
             visitorId: visitorId,
             postId: postId,
         })

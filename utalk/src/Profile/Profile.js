@@ -15,22 +15,24 @@ function Profile() {
   let query = new URLSearchParams(location.search);
 
   const [user, setUser] = useState({});
-  const [visitor, setVisitor] = useState();
+  // const [visitor, setVisitor] = useState();
   const [posts, setPosts] = useState([]);
   const [render, setRender] = useState(true);
   const [createState, setCreatState] = useState(false);
 
   const navigate = useNavigate();
 
+  console.log(query.get('id'), query.get('visitorId'));
+
   useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get('http://localhost:8082/api/getUserInfo', {
+      const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getUserInfo', {
         params: {
           id: query.get('id'),
         },
         withCredentials: true,
       })
-      setVisitor(res.data.visitor);
+      // setVisitor(res.data.visitor);
       setUser(res.data.user);
     }
     getUser();
@@ -38,9 +40,9 @@ function Profile() {
 
   useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get('http://localhost:8082/api/getPosts', {
+      const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getPosts', {
         params: {
-          userId: query.get('id'),
+          id: query.get('id'),
         }
       })
       setPosts(res.data);
@@ -50,11 +52,9 @@ function Profile() {
 
   return (
     <div className='Profile'>
-      {
-        visitor && (
-          <Header userId={visitor.userId} />
-        )
-      }
+
+      <Header userId={query.get('visitorId')} />
+
       <div className='imgBx'>
         <div className='avatar'>
           <img src={user.user_avatar ? user.user_avatar : userImg} />
@@ -62,17 +62,19 @@ function Profile() {
             <i className="fa-solid fa-camera"></i>
           </div>
         </div>
+
         <h2>{user.first_name + " " + user.last_name}</h2>
       </div>
       {
-        visitor && user && visitor.userId != user.id && (
+        user.id && query.get('visitorId') && query.get('visitorId') != user.id &&
+        (
           <div className='followBx'>
-            <Follow userId={user.id} visitorId={visitor.userId} />
+            <Follow userId={user.id} visitorId={query.get('visitorId')} />
           </div>
         )
       }
       {
-        visitor && visitor.userId == user.id &&
+        query.get('visitorId') == user.id &&
         (
           <div className='openCreatePostBx'>
             <div className='imgCreateBx'>
@@ -83,7 +85,6 @@ function Profile() {
           </div>
         )
       }
-
       {
         createState &&
         <div className='createBg'>
@@ -92,13 +93,16 @@ function Profile() {
       }
 
       {
-        visitor && visitor.userId && (
+        query.get('visitorId') && posts &&
+        (
           [...posts].reverse().map((post) => {
-            return <Post post={post} visitorId={visitor.userId} key={post.id} />
+            return <Post post={post} visitorId={query.get('visitorId')} key={post.id} />
           })
         )
       }
-    </div >
+    </div>
+
+
   )
 }
 

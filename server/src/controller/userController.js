@@ -112,8 +112,8 @@ let updateAvatar = async (req, res) => {
 }
 
 let getPosts = async (req, res) => {
-    let userId = req.query.userId;
-    let posts = await userService.getPostsbyUserId(userId);
+    let id = req.query.id;
+    let posts = await userService.getPostsbyUserId(id);
     return res.send(posts);
 }
 

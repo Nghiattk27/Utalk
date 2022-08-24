@@ -19,7 +19,7 @@ function Comment({ comment, visitorId }) {
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await axios.get('http://localhost:8082/api/getUser', {
+            const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getUser', {
                 params: {
                     id: comment.user_id,
                 }
@@ -30,13 +30,13 @@ function Comment({ comment, visitorId }) {
     }, [])
 
     const deletePostComment = async () => {
-        await axios.post('http://localhost:8082/api/deletePostComment', {
+        await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/deletePostComment', {
             id: comment.id,
         })
     }
 
     const editPostComment = async (content) => {
-        await axios.put('http://localhost:8082/api/updatePostComment', {
+        await axios.put('https://utalk-backend-nodejs.herokuapp.com/api/updatePostComment', {
             id: comment.id,
             content: content,
         })

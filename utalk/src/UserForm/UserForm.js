@@ -27,13 +27,13 @@ function UserForm() {
             setWarning('Hãy điền đầy đủ thông tin');
         }
         else {
-            const res = await axios.put('http://localhost:8082/api/updateUser', {
+            const res = await axios.put('https://utalk-backend-nodejs.herokuapp.com/api/updateUser', {
                 id: query.get("id"),
                 first_name: firstName,
                 last_name: lastName,
                 email: email,
             })
-            navigate(`/Profile?id=${query.get("id")}`);
+            navigate(`/Profile?id=${query.get("id")}&visitorId=${query.get("id")}`);
 
         }
     }

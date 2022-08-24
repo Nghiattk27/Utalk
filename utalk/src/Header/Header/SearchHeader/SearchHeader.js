@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./SearchHeader.css";
 
-function SearchHeader() {
+function SearchHeader({ visitorId }) {
 
     const [userList, setUserList] = useState();
     const [valueSearchInput, setValueSearchInput] = useState("");
@@ -13,7 +13,7 @@ function SearchHeader() {
 
     useEffect(() => {
         const users = async () => {
-            const res = await axios.get('http://localhost:8082/api/getAllUsers');
+            const res = await axios.get('https://utalk-backend-nodejs.herokuapp.com/api/getAllUsers');
             setUserList(res.data);
         }
         users();
@@ -30,7 +30,7 @@ function SearchHeader() {
     }
 
     const liHandleClick = (user_id) => {
-        navigate(`/Profile?id=${user_id}`);
+        navigate(`/Profile?id=${user_id}&visitorId=${visitorId}`);
         navigate(0);
     }
 

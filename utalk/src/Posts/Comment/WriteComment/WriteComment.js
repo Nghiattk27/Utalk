@@ -8,7 +8,7 @@ function WriteComment({ visitorId, postId, comments, setComments, visitor }) {
     const textareaRef = useRef();
 
     const addPostComment = async (content) => {
-        const res = await axios.post('http://localhost:8082/api/addPostComment', {
+        const res = await axios.post('https://utalk-backend-nodejs.herokuapp.com/api/addPostComment', {
             visitorId: visitorId,
             postId: postId,
             content: content,
