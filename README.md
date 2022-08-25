@@ -9,6 +9,6 @@
 
 ## Dự án sử dụng các framework: Reactjs, Express.js. Phần Backend dùng MySql
 
-Video demo dự án: 
+#### Video demo dự án: 
 
-![](https://github.com/Nghiattk27/Utalk/blob/master/video%2C%20image/utalk.webm)
+[![](https://github.com/Nghiattk27/Utalk/blob/master/video%2C%20image/utalk.webm)](https://drive.google.com/file/d/121wIznC0UEbJMi4C7qnRe6CV22rp7PSw/view?usp=sharing)
